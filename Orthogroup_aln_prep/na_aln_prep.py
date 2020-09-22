@@ -38,3 +38,5 @@ for i in range(0,len(orthos)):
 	except KeyError:
 		print i
 		pass
+
+#add Vitales to each orthogroup
