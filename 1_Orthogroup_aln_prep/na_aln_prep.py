@@ -39,4 +39,13 @@ for i in range(0,len(orthos)):
 		print i
 		pass
 
-#add Vitales to each orthogroup
+#add Celastrales, Oxalidales, and Vitales to each orthogroup
+orthos=open('../malpighiales_sapria_orthogroup.list').readlines()
+
+for i in range(0,len(orthos)):
+	malp_ortho=orthos[i].split()[0]
+	seqs=SeqIO.parse('./tem/'+malp_ortho.split('.')[0]+'.na.fas','fasta')
+	outfile=open(`i`+'.na.fas','a')
+	for seq in seqs:
+		if seq.id.startswith(('Vitis','Elaeocarpus','Crossopetalum','Oxalis')):
+			d=SeqIO.write(seq, outfile, 'fasta')
