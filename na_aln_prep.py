@@ -3,6 +3,7 @@ from Bio import SeqIO
 
 orthos=open('../malpighiales_sapria_orthogroup.list').readlines()
 
+#malp sequences
 for i in range(0,len(orthos)):
 	malp_ortho=orthos[i].split()[0]
 	malp_tr=Tree('/n/davis_lab/Users/lmcai/Malpighiales/WGD/2_round/homo2_22sp/'+malp_ortho)
@@ -22,5 +23,18 @@ for i in range(0,len(orthos)):
 		#for sp in sap_sp:
 		#	d=SeqIO.write(malp_seqs[sp],outfile,'fasta')
 	outfile.close()
-	
-	
+
+#sap sequences
+for i in range(0,len(orthos)):
+	sap_ortho=orthos[i].split()[1]
+	sap_tr=Tree('../yang_subtree/'+sap_ortho)
+	sap_sp=[leaf.name for leaf in sap_tr if leaf.name.startswith(('Rca','Rtu','Rhi','Sap'))]
+	try:
+		outfile=open(`i`+'.na.fas','a')
+		sap_seqs=SeqIO.index('/scratch/lmcai/15_orthofinder_seq/na_aln/'+sap_ortho.split('.')[0]+'.na.fas','fasta')
+		for sp in sap_sp:
+			d=SeqIO.write(sap_seqs[sp],outfile,'fasta')
+		outfile.close()
+	except KeyError:
+		print i
+		pass
