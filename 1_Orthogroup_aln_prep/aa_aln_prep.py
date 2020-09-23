@@ -10,7 +10,7 @@ for i in range(0,len(orthos)):
 	malp_sp=[leaf.name for leaf in malp_tr if not leaf.name.startswith('Podostemum')]
 	malp_seqs=SeqIO.parse('./tem/'+malp_ortho.split('.')[0]+'.aa.fas','fasta')
 	outfile=open(`i`+'.aa.fas','a')
-	for seq in seqs:
+	for seq in malp_seqs:
 		if seq.id.startswith(('Vitis','Elaeocarpus','Crossopetalum','Oxalis')) or seq.id in malp_sp:
 			d=SeqIO.write(seq,outfile,'fasta')
 	outfile.close()
