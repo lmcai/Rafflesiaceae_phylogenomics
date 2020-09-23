@@ -21,7 +21,7 @@ for i in range(0,len(orthos)):
 	sap_tr=Tree('../yang_subtree/'+sap_ortho)
 	sap_sp=[leaf.name for leaf in sap_tr if leaf.name.startswith(('Rca','Rtu','Rhi','Sap'))]
 	if len(sap_sp)>0:
-		outfile=open(`i`+'.na.fas','a')
+		outfile=open(`i`+'.aa.fas','a')
 		sap_seqs=SeqIO.index('/scratch/lmcai/15_orthofinder_seq/aa_aln/'+sap_ortho.split('.')[0]+'.aa.fas','fasta')
 		for sp in sap_sp:
 			d=SeqIO.write(sap_seqs[sp],outfile,'fasta')
