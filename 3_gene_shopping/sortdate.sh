@@ -21,3 +21,11 @@ python ~/programs/SortaDate/src/get_bp_genetrees.py gene_trees_sortdata/ G2999.a
 #Combine the results from these two runs
 
 python ~/programs/SortaDate/src/combine_results.py gene_tree_root2tip_var.tsv gene_tree_bp.tsv --outf gene_tree_combined_statistics.tsv
+
+#######################
+#Sort and get the list of the good genes
+
+#remove rows without four columns
+awk 'NF==4{print}{}' gene_tree_combined_statistics.tsv >gene_tree_combined_statistics_filtered.tsv
+
+python ~/programs/SortaDate/src/get_good_genes.py gene_tree_combined_statistics_filtered.tsv --max 500 --order 1,2,3 --outf best_gene.list
