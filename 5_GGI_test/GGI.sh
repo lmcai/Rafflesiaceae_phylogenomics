@@ -1,4 +1,14 @@
-#module load gcc/7.1.0-fasrc01 RAxML/8.2.11-fasrc01
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -t 0-04:00
+#SBATCH -p serial_requeue
+#SBATCH --mem=5000
+#SBATCH -o lmcai.out
+#SBATCH -e lmcai.err
+module load Anaconda
+source activate kat_env
+module load gcc/7.1.0-fasrc01 RAxML/8.2.11-fasrc01
 
 export ID=$1
 
@@ -10,11 +20,16 @@ python ../constrained_tree_prep.py $ID
 #run raxml on partially constrained tree
 raxmlHPC-SSE3 -p12345 -g $ID.H1.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H1
 raxmlHPC-SSE3 -p12345 -g $ID.H2.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H2
-raxmlHPC-SSE3 -p12345 -g $ID.H3.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H3
+#raxmlHPC-SSE3 -p12345 -g $ID.H3.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H3
 raxmlHPC-SSE3 -p12345 -g $ID.H4.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H4
 raxmlHPC-SSE3 -p12345 -g $ID.H5.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H5
-raxmlHPC-SSE3 -p12345 -g $ID.H6.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H6
+#raxmlHPC-SSE3 -p12345 -g $ID.H6.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H6
 raxmlHPC-SSE3 -p12345 -g $ID.H7.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H7
+raxmlHPC-SSE3 -p12345 -g $ID.H9.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H9
+raxmlHPC-SSE3 -p12345 -g $ID.H12.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H12
+raxmlHPC-SSE3 -p12345 -g $ID.H15.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H15
+raxmlHPC-SSE3 -p12345 -g $ID.H16.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H16
+raxmlHPC-SSE3 -p12345 -g $ID.H17.tre -m GTRGAMMA -s ../../4_na_aln_1to1/$ID.aln -n $ID.H17
 
 rm RAxML_info.$ID.H*
 rm RAxML_log.$ID.H*
@@ -42,27 +57,27 @@ rm RAxML_info.$ID.likelihood
 
 ###############
 #The following are hypotheses to be tested
-#Euphorbiaceae
-(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora,Drypetes,Clutia);
+#H15: Euphorbiaceae
+#(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora,Drypetes,Clutia);
+#H1: Euphorbiaceae+Peraceae
+#(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora,Drypetes);
+#H2: Putranjivaceae
+#(((Sap,Rhi,Rca,Rtu),Drypetes),Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora);
+#H4: ER
+#(((Sap,Rhi,Rca,Rtu),(Erythroxylum,Rhizophora)),Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Drypetes);
+#H5: ((Euphorbiaceae,Peraceae),Putranjivaceae)
+#(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Drypetes)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora);
+#H7: ((Euphorbiaceae,Peraceae),ER)
+#(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Erythroxylum,Rhizophora)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Drypetes);
+#H9: (Putranjivaceae,ER)
+#(((Sap,Rhi,Rca,Rtu),(Drypetes,Erythroxylum,Rhizophora)),Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia);
+#H12: ((Euphorbiaceae,Peraceae),Putranjivaceae,ER)
+#(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Drypetes,Erythroxylum,Rhizophora)),Galearia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu);
 
-#Euphorbiaceae+Peraceae
-(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora,Drypetes);
-#Putranjivaceae
-(((Sap,Rhi,Rca,Rtu),Drypetes),Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora);
-#ER
-(((Sap,Rhi,Rca,Rtu),(Erythroxylum,Rhizophora)),Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Drypetes);
-#((Euphorbiaceae,Peraceae),Putranjivaceae)
-(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Drypetes)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora);
-#((Euphorbiaceae,Peraceae),ER)
-(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Erythroxylum,Rhizophora)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Drypetes);
-#(Putranjivaceae,ER)
-(((Sap,Rhi,Rca,Rtu),(Drypetes,Erythroxylum,Rhizophora)),Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia);
-#((Euphorbiaceae,Peraceae),Putranjivaceae,ER)
-(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Drypetes,Erythroxylum,Rhizophora)),Galearia,Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu);
-
-#Euphorbiaceae+Peraceae+Putranjivaceae+Pandaceae
+#H11: Euphorbiaceae+Peraceae+Putranjivaceae+Pandaceae
 #(((Sap,Rhi,Rca,Rtu),(Ricinus,Hevea,Manihot,Endospermum,Jatropha,Clutia,Drypetes,Galearia)),Passiflora,Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Erythroxylum,Rhizophora);
-#Passiflora
+#H16: Passiflora
 #(((Sap,Rhi,Rca,Rtu),Passiflora),Ixonanthes,Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora,Drypetes,Clutia,Ricinus,Hevea,Manihot,Endospermum,Jatropha);
-#Ixonanthes
+#H17: Ixonanthes
 #(((Sap,Rhi,Rca,Rtu),Ixonanthes),Sauropus,Bischofia,Chrysobalanus,Linum,Ochna,Garcinia,Clusia,Mammea,Calophyllum,Hypericum,Podostemum,Galphimia,Tristellateia,Bergia,Elatine,Bhesa,Crossopetalum,Oxalis,Elaeocarpus,Viola,Rinorea,Malesherbia,Passiflora,Casearia,Flacourtia,Populus,Salix,SalixSu,Galearia,Erythroxylum,Rhizophora,Drypetes,Clutia,Ricinus,Hevea,Manihot,Endospermum,Jatropha);
+
