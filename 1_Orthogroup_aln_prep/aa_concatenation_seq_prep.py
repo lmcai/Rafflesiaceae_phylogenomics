@@ -8,7 +8,7 @@ for i in range(0,len(orthos)):
 	try:
 		malp_ortho=orthos[i].split()[0]
 		malp_tr=Tree('../na_tree_yang_pruned/'+`i`+'.inclade1.ortho1.tre',format=1)
-		malp_sp=[leaf.name for leaf in malp_tr if not leaf.name.startswith('Podostemum')]
+		malp_sp=[leaf.name for leaf in malp_tr]
 		malp_seqs=SeqIO.parse(`i`+'.aa.aln.trimmed.fas','fasta')
 		outfile=open(`i`+'.aa.aln.trimmed.1to1.fas','a')
 		for seq in malp_seqs:
