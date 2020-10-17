@@ -6,10 +6,10 @@ orthos=open('../malpighiales_sapria_orthogroup.list').readlines()
 #prepare 1 to 1 orthogroup sequences
 for i in range(0,len(orthos)):
 	try:
-		malp_ortho=orthos[i].split()[0]
-		malp_tr=Tree('../na_tree_yang_pruned/'+`i`+'.inclade1.ortho1.tre',format=1)
+		#malp_ortho=orthos[i].split()[0]
+		malp_tr=Tree('../3_na_tree_1to1_yang_subtree/'+`i`+'.inclade1.ortho1.tre',format=1)
 		malp_sp=[leaf.name for leaf in malp_tr]
-		malp_seqs=SeqIO.parse(`i`+'.aa.aln.trimmed.fas','fasta')
+		malp_seqs=SeqIO.parse('../2_aa_aln_geneTr/'+`i`+'.aa.aln.trimmed.fas','fasta')
 		outfile=open(`i`+'.aa.aln.trimmed.1to1.fas','a')
 		for seq in malp_seqs:
 			if seq.id in malp_sp:
