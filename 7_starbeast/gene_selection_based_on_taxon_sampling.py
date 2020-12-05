@@ -44,6 +44,7 @@ for l in z:
 	except:
 		out.write(l)
 
+#get position of the longest CDS in sapria gene
 from gff3 import Gff3
 gff = Gff3('Sapria_longintron.rnd2_old_snap_evidence_based.GAAS.gff')
 CDS_length={}
@@ -52,16 +53,17 @@ for l in gff.lines:
 	if l['type']=='mRNA':
 	#if l['type']=='mRNA' and float(l['attributes']['_AED']) <0.5:
 		rna_nam=l['attributes']['Name']
-		CDS_pos_curr=[]
+		CDS_pos_curr=0
 		CDS_max=0
 		for rec in l['children']:
 			if rec['type']=='CDS':
 				CDS_len=rec['end']-rec['start']+1
+				CDS_end_pos=CDS_pos_curr+CDS_len
 				if CDS_len>CDS_max:
 					CDS_max=CDS_len
-					CDS_pos_curr=[rec['start'],rec['end']]
+					CDS_max_pos=[CDS_end_pos-CDS_len,CDS_end_pos]
 		CDS_length[rna_nam]=CDS_max
-		CDS_pos[rna_nam]=CDS_pos_curr
+		CDS_pos[rna_nam]=CDS_max_pos
 		
 x=open('/n/holyscratch01/davis_lab/lmcai/sapria_phylogeny/12_starbeast2/G377_one_missing_sap_ricinus_geneInfo.list').readlines()
 out=open('G377_one_missing_sap_ricinus_geneInfo.list','a')
