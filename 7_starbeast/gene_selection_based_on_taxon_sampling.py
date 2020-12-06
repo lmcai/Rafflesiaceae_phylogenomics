@@ -53,12 +53,12 @@ for l in gff.lines:
 	if l['type']=='mRNA':
 	#if l['type']=='mRNA' and float(l['attributes']['_AED']) <0.5:
 		rna_nam=l['attributes']['Name']
-		CDS_pos_curr=0
+		CDS_end_pos=0
 		CDS_max=0
 		for rec in l['children']:
 			if rec['type']=='CDS':
 				CDS_len=rec['end']-rec['start']+1
-				CDS_end_pos=CDS_pos_curr+CDS_len
+				CDS_end_pos=CDS_end_pos+CDS_len
 				if CDS_len>CDS_max:
 					CDS_max=CDS_len
 					CDS_max_pos=[CDS_end_pos-CDS_len,CDS_end_pos]
@@ -78,11 +78,30 @@ for l in x[1:]:
 ###############
 #generate alignment
 from Bio import SeqIO
-x=open('G81_no_missing_data.list').readlines()
+from Bio.Align import MultipleSeqAlignment
+#x=open('G81_no_missing_data.list').readlines()
+x=open('G377_one_missing_sap_ricinus_geneInfo.list').readlines()
+
 for l in x:
-	recs=SeqIO.parse('../4_na_aln_1to1/'+l.strip()+'.aln','fasta')
-	out=open(l.strip()+'.aln','a')
-	for rec in recs:
-		if rec.id.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes', 'Crossopetalum', 'Oxalis')):
-			d=SeqIO.write(rec,out,'fasta')
+	try:
+		exon_pos=l.split()[-1].split(',')
+		recs=SeqIO.parse('../4_na_aln_1to1/'+l.split('.')[0]+'.aln','fasta')
+		recs=MultipleSeqAlignment(recs)
+		#get exon position
+		sap_rec=[i for i in recs if i.id=='Sap']
+		sap_rec=sap_rec[0]
+		#get start and end position
+		cur_sap_na=0
+		aln_exon=[]
+		for i in range(0,len(sap_rec.seq)):
+			if not sap_rec.seq[i]=='-':
+				cur_sap_na=cur_sap_na+1
+				if cur_sap_na>int(exon_pos[0]) and cur_sap_na<int(exon_pos[1]):aln_exon.append(i)
+		recs=recs[:,aln_exon[0]:aln_exon[-1]]
+	#recs=SeqIO.parse('../4_na_aln_1to1/'+l.strip()+'.aln','fasta')
+		out=open(l.split('.')[0]+'.aln','a')
+		for rec in recs:
+			if rec.id.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes', 'Crossopetalum', 'Oxalis')):
+				d=SeqIO.write(rec,out,'fasta')
+	except:print l.split('.')[0]
 		
