@@ -1,4 +1,5 @@
 #filter gene for starbeast
+##########################################
 #taxon sampling Sap, Rhi, Rca, Rtu, Ery, Rhizo, Galearia, Drypetes, Clutia, Ricinus, Ixonanthes, Crossopetalum, Oxalis
 from ete3 import Tree
 
@@ -20,6 +21,7 @@ for l in x:
 
 out.close()
 
+##########################################
 #for the 377 orthogroups that have only one missing clade, get their sapria and ricinus ID
 x=open('G377_one_missing.list').readlines()
 out=open('G377_one_missing_sap_ricinus.list','a')
@@ -30,6 +32,7 @@ for l in x:
 	out.write(l.strip()+'\t'+'\t'.join(sap+ricinus)+'\n')
 
 out.close()
+##########################################
 #add intron and gene length info
 x=open('Sapria_longintron.rnd2_old_snap_evidence_based.GAAS.filtered.csv').readlines()
 a={}
@@ -43,8 +46,11 @@ for l in z:
 		out.write(l.strip()+'\t'+a[l.split()[1]])
 	except:
 		out.write(l)
+#the majority of the genes contain introns, so choosing intron-free genes are too agressive
 
-#get position of the longest CDS in sapria gene
+out.close()
+##########################################
+#Option 1: using the longest CDS in sapria gene
 from gff3 import Gff3
 gff = Gff3('Sapria_longintron.rnd2_old_snap_evidence_based.GAAS.gff')
 CDS_length={}
@@ -74,8 +80,6 @@ for l in x[1:]:
 	except:
 		out.write(l)
 
-
-###############
 #generate alignment
 from Bio import SeqIO
 from Bio.Align import MultipleSeqAlignment
@@ -104,4 +108,101 @@ for l in x:
 			if rec.id.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes', 'Crossopetalum', 'Oxalis')):
 				d=SeqIO.write(rec,out,'fasta')
 	except:print l.split('.')[0]
+out.close()
+
+##########################################
+#Option 2: split the alignment into exons and choose the one with the most complete taxon sampling and the longest in length
+#This is because for most species, these are transcript data, type-II missing data is prevalent in the alignment. Rafflesiaceae also have a lot of pseudogenes/genes evolve too fast that the alignment is not so good.
+
+#get exon position for all genes
+from gff3 import Gff3
+gff = Gff3('Sapria_longintron.rnd2_old_snap_evidence_based.GAAS.gff')
+CDS_pos={}
+for l in gff.lines:
+	if l['type']=='mRNA':
+	#if l['type']=='mRNA' and float(l['attributes']['_AED']) <0.5:
+		rna_nam=l['attributes']['Name']
+		CDS_pos[rna_nam]=[]
+		CDS_start_pos=0
+		for rec in l['children']:
+			if rec['type']=='CDS':
+				CDS_len=rec['end']-rec['start']
+				CDS_pos[rna_nam].append([CDS_start_pos,CDS_start_pos+CDS_len])
+				CDS_start_pos=CDS_start_pos+CDS_len+1
 		
+
+from Bio import SeqIO
+from Bio.Align import MultipleSeqAlignment
+x=open('G377_one_missing_sap_ricinus_geneInfo.list').readlines()
+for l in x:
+	try:
+		recs_entire=SeqIO.parse('../4_na_aln_1to1/'+l.split('.')[0]+'.aln','fasta')
+		recs_entire=MultipleSeqAlignment(recs_entire)
+		sap_rec=[m for m in recs_entire if m.id=='Sap']
+		sap_rec=sap_rec[0]
+		exon_pos=CDS_pos[l.split()[1]]
+		#get start and end position of all exons in the alignment
+		cur_sap_na=0
+		aln_exon=[[]]
+		i=0
+		for j in range(0,len(sap_rec.seq)):
+			if not sap_rec.seq[j]=='-':
+				cur_sap_na=cur_sap_na+1
+				if cur_sap_na>int(exon_pos[i][0]) and cur_sap_na<int(exon_pos[i][1]):
+					aln_exon[i].append(j)
+				elif cur_sap_na==int(exon_pos[i][1]) and i+1<len(exon_pos):
+					i=i+1
+					aln_exon.append([])
+		#get exon alignment
+		for ii in range(0,len(aln_exon)):
+			recs=recs_entire[:,aln_exon[ii][0]:aln_exon[ii][-1]]
+			recs=[m for m in recs if m.id.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes', 'Crossopetalum', 'Oxalis'))]
+			recs=MultipleSeqAlignment(recs)
+			total_na=len(recs)*len(recs[0].seq)
+			total_gap=0
+			for jj in recs:
+				total_gap=total_gap+jj.seq.count('-')
+			missing_data=total_gap/float(total_na)
+			#filter exon alignment on missing data, length, and number of species:
+			if missing_data<0.1 and len(recs[0].seq)>250:
+				out=open(l.split('.')[0]+'.'+`ii`+'.aln','a')
+				d=SeqIO.write(recs,out,'fasta')
+				out.close()
+				print(l.split('.')[0],ii,missing_data)
+			if len(recs[0].seq)>500:
+				out=open(l.split('.')[0]+'.'+`ii`+'.aln','a')
+				d=SeqIO.write(recs,out,'fasta')
+				out.close()
+				print(l.split('.')[0],ii,missing_data)
+	except:print l.split('.')[0]
+
+#result in a total of 179 exon alignment
+
+######################
+#manual check the resultant exon alignment in geneious
+#remove long exon alignment with excessive missing data
+#result in 106 exon alignments
+
+######################
+#filter based on taxon sampling
+from Bio import SeqIO
+import os
+file=os.listdir('.')
+file=[i for i in file if i.endswith('.fas')]
+for i in file:
+	recs=SeqIO.parse(i,'fasta')
+	taxa=[rec.id for rec in recs]
+	sap=[j for j in taxa if j.startswith(('Sap','Rhi','Rca','Rtu')) and not j.startswith('Rhizo')]
+	Ixon=[j for j in taxa if j.startswith('Ixo')]
+	Pan=[j for j in taxa if j.startswith('Galea')]
+	dry=[j for j in taxa if j.startswith('Drype')]
+	eupho=[j for j in taxa if j.startswith(('Clutia','Ricinus'))]
+	ER=[j for j in taxa if j.startswith(('Ery','Rhizo'))]
+	outgr=[j for j in taxa if j.startswith(('Crossopetalum','Oxalis'))]
+	z=[j for j in [sap,Ixon,Pan,dry,eupho,ER,outgr] if j]
+	if len(z)>5 and len(taxa)>9:
+		print(i,len(z),len(taxa))	
+#require at least 6/7 of the focal clade and 10/13 of species to present in the alignment
+#a total of 83 exon alignments in G83.list
+
+
