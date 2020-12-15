@@ -36,7 +36,6 @@ import os
 import ete3
 x=os.listdir('.')
 x=[i.split('.')[0] for i in x if i.startswith(('1','2','3','4','5','8'))]
-out=open('beast_monophyletic_constraint.txt','a')
 from ete3 import Tree
 for i in x:
 	t=Tree('../3_na_tree_1to1_yang_subtree/'+i+'.inclade1.ortho1.tre',format=1)
@@ -47,11 +46,30 @@ for i in x:
 	ingroup=[leaf.name for leaf in t if leaf.name.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes'))]
 	#monophyletic ingroup tree
 	if t.check_monophyly(values=ingroup, target_attr="name")[0]:
-		out.write("    <init spec='beast.util.TreeParser' id='NewickTree.t:"+i+"' initial=\"@Tree.t:"+i+"\" taxa='@"+i+"' IsLabelledNewick=\"true\" newick=\""+t.write(format=5)+"\"/>\n")
+		t.write(outfile=i+'.tre',format=1)
 	else:
 		t=Tree('misc/'+i+'.tre',format=1)
-		out.write("    <init spec='beast.util.TreeParser' id='NewickTree.t:"+i+"' initial=\"@Tree.t:"+i+"\" taxa='@"+i+"' IsLabelledNewick=\"true\" newick=\""+t.write(format=5)+"\"/>\n")
+		
+#These trees then need to be reformated to ultrametric tree with a relatively large root age so that all gene trees coalesce at the root of the species tree
+#in R
 
+library(ape)
+files=list.files(path = ".", pattern = '*.tre')
+for (i in files){
+	tr=read.tree(i)
+	chr=chronos(tr, lambda = 1, model = "correlated", calibration = makeChronosCalib(tr,node = "root", age.min = 100,age.max=120))
+	write.tree(chr,paste(i,'.chr',sep=''))
+}
+
+#in python
+import os 
+timetrees=[i for i in os.listdir('.') if i.endswith('.chr')]
+out=open('beast_monophyletic_constraint.txt','a')
+
+for i in timetrees:
+	out.write("    <init spec='beast.util.TreeParser' id='NewickTree.t:"+i.split('.')[0]+"' initial=\"@Tree.t:"+i.split('.')[0]+"\" taxa='@"+i.split('.')[0]+"' IsLabelledNewick=\"true\" newick=\""+open(i).readline().strip()+"\"/>\n")
+
+out.close()
 #non-monophyletic gene trees:
 
 #replace the following bock to newick trees
@@ -61,5 +79,9 @@ for i in x:
     </populationModel>
 </init>
 
-
+#move the SBI section to right above 'mcmc'
+#replace the SBI section with a defined species tree and make sure to add scale="0.001" in the species tree.
+#This way species tree will have a very recent divergence time and all gene tree will coalesce at the base of the tree.
+#Previous errors of can;t find a proper starting place is cause by the violation of coalescent model: some gene trees have more recent coalescent time than the species tree.
+#It works!!! YAY!!!
 
