@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.6">
+
+
+    <data
+id="1670"
+spec="Alignment"
+name="alignment">
+                    <sequence id="seq_Clutia4" spec="Sequence" taxon="Clutia" totalcount="4" value="TTGGCATCGCCGAATGACAAGTACAGGGTGTTCTATGCGGAGAGGAGTGGATGGTGGACGGTGATAAAGGCCACTGGGGCTCCAGGCCATGGATCAAAGCTTTATGATAATAGTGCAATGGAGAATCTCTTGAAAAGCATTGAGAGTGTGAGGAGATTTCGTGCTTCTCAGTTTGATTTGGTGAAGGCTGGTTTGAAGGCTGAGGGAGAAGTCATTTCTGTTAACATGGTCTATCTTAAGGCTGGAACTCCATCTCCTAC"/>
+                    <sequence id="seq_Drypetes4" spec="Sequence" taxon="Drypetes" totalcount="4" value="TTGGCTTCCCCAGGTGAGAAGTACCGGGCTTTTTATGCGGAGAGGTCTCCGTGGTGGATGGTGATTAAGGCCACTGGAGCTCCAGGCCATGGAGCAAAGCTGTATGATAATAGTGCCATGGAGAATCTTTTGAAAAGCATTGAGAGTGTGAGAAGGTTTCGCGCTTCTCAGTTTGACTTGGTGAAGGCTGGTTTGAAGGCTGAAGGAGAGGTCATTTCTGTTAACATAGCCTTTCTTAAGGCCGGCACTCCATCTCCAAC"/>
+                    <sequence id="seq_Erythroxylum4" spec="Sequence" taxon="Erythroxylum" totalcount="4" value="TTGGCTTCACCCACCGACAACTACAGGGCTTTTTATGCAGAGAGGAGCCCTTGGTGGCTAGTGATCAAGGCTGCTGGTGCCCCTGGTCATGGAGCTAAGCTATATGACAATAGTGCTATGGAGAATCTTTTGAAAAGCATCGAGAGCGTGAGGAGGTTTCGTGCTTCTCAGTTTGATTTGGTGAAGGCTGGTTTCAAAGCTGAAGGAGAGGTTGTTTCTGTAAACATGGTCTTTCTTAAAGCTGGCACTCCTTCTCCTAC"/>
+                    <sequence id="seq_Ixonanthes3" spec="Sequence" taxon="Ixonanthes" totalcount="4" value="---------------GAGAATTACAGGGCGTTTTATGGGGAAAGGTGCGCGTGGTGGATCTCTATTAAGGCCACCGGGGCTCCAGGCCATGGTGCAAAGCTCTATGACAATAGCGCTATGGAGAATCTTTTGAAAAGCATTGAGGCTGTTAGGAGGTTTCGCGCTTCTCAATTTGATTTGGTCAAGGCTGGTTTGAAGGCTGAAGGAGAGGTCATTTCTGTTAACATGGTCTTTCTCAAGGCTGGCATTCCTTCCCCAAC"/>
+                    <sequence id="seq_Oxalis3" spec="Sequence" taxon="Oxalis" totalcount="4" value="TTAGCATCTCCCGACGAGCATTTTAGAACATTTTACGCAGAGAGATGTGGGTGGTGGCTGGTGATCAAAGCTAAAGGAGCACCTGGACATGGTGCCAAACTTTATGATAACTCAGCTATGGAGAATTTGCTCAAGAGTATTGAGAGTGTGAGAAGATTCAGAGCTTCACAGTTTGATTTAGTAAAGCAAGGTTTCAAGGCTGAAGGAGAAGTCATTTCTGTTAATATGGCCTTTCTTAAAGCTGGCACTCCATCTCCCAC"/>
+                    <sequence id="seq_Rca3" spec="Sequence" taxon="Rca" totalcount="4" value="CTGGCATCGCCTAGTGAGAATTACAGGGTGTTCTACGGGGAGCGAAGTCCATGGTGGCTGGTGATCAAAGCAACAGGGTCTCCTGGACATGGGGCTAGGCTTTATGACAACACTGCCACAGAGAATCTTGCTCGCAGCATTGAGAGTATCACAAGGTTTCGTGCATCTCAGTTTGATTTGGTGAAGTCTGGGTCACGGGAAGAAGGGGAGGTTATTTCTGTGAATCTGGTTTTCCTCAAGGCAGGGATCCCCTCTCCTAC"/>
+                    <sequence id="seq_Rhi2" spec="Sequence" taxon="Rhi" totalcount="4" value="CTGGCATCGCCTGGTGAGAATTACAGGTTGTTCTACGGGGAGCGAAGCCCATGGTGGCTGGTGATCAAAGCAGCAGGGTCTCCTGGTCATGGAGCCTGGCTCTATGACAACACTGCCACAGAGAATCTCGCTCGCAGCATCGAGAGTATCACAAGGTTTCGAGCATCTCAGTTTGATTTGTGGAAGACTGGGTTACGGGAAGAAGGGGAGGTTATTTCTGTGAATCTGGTTTTCCTCGAGGCTGGGACCCCCTCTCCTAC"/>
+                    <sequence id="seq_Rhizophora4" spec="Sequence" taxon="Rhizophora" totalcount="4" value="TTGGCTTCGCCCAACGAGAACTACAGGGCGTTTTATGCAGAGAGGAGTCCTTGGTGGCTGGTCATCAAAGCCACTGGGACTCCAGGCCACGGAGCTAAGCTCTTTGACAATAGTGCCATGGAGAATCTTCTGAAAAGCATCGAAAGTATTCGGAGGTTTCGTGCTTCTCAGTTTGATTTGGTGAAGTCTGGTTTAAAAGCTGAGGGAGAGGTCATTTCTGTCAACATGGTCTTTCTTAAGGCCGGCACTCCCTCTCCAAC"/>
+                    <sequence id="seq_Ricinus4" spec="Sequence" taxon="Ricinus" totalcount="4" value="TTGGCATCTCCTACTGAGGAGTATAGGCCTTTTTATGCAGAGAGGAGCCCGTGGTGGCTGGTGATTAAGGCCATTGGAGCTCCAGGCCATGGAGCTAAGCTTTATGATAATAGTGCCATGGAGAATCTCCTGAAAAGTATCGAGACTATAAGGAGATTTCGTGCTTCTCAATTTGATTTGGTGAAGTCTGGTTTGAAGGCTGAAGGAGAGGTTGTTTCTGTTAATATGGTCTCTCTTAAAGCTGGCACTCCATCTCCAAC"/>
+                    <sequence id="seq_Rtu4" spec="Sequence" taxon="Rtu" totalcount="4" value="CTGGCATCGCCTAGTGAGAATTACAGGGTGTTCTACGGGGAGCGAAGCCCATGGTGGCTGGTGATCAAAGCAACAGGGTCTCCTGGACATGGGGCTAGGCTTTATGACAACACTGCCACAGAGAATCTTGCTCGCAGCATTGAGAGTATCACAAGGTTTCGTGCATCTCAGTTTGATTTGGTGAAGTCTGGGTCACGGGAAGAAGGGGAGGTTATTTCTGTGAATCTGGTTTTCCTCAAGGCAGGGATCCCCTCTCCTAC"/>
+                    <sequence id="seq_Sap4" spec="Sequence" taxon="Sap" totalcount="4" value="CTGGCGTCACCTGGTGAGGATTACAGGGTGTTCTACGGGGAGAGGAGCCCCTGGTGGCTGGTGATCAAAGCAACAGGGTCTCCTGGTCATGGAGCTAGGCTCTATGACAACACTGCCACAGAGAATCTGGCTCGCAGCATTGAGAGTATCACGAGGTTTCGTGCATCTCAGTTTGATTTGGTAAAGACTGGGTCACGGGAAGAAGGGGAGATTATTTCAGTGAATATGGTTTTCCTCGAGGCTGGGATCCCCTCTCCTAC"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="10000000">
+    <state id="state" spec="State" storeEvery="5000">
+        <tree id="Tree.t:1670" spec="beast.evolution.tree.Tree" name="stateNode">
+            <taxonset id="TaxonSet.1670" spec="TaxonSet">
+                <alignment idref="1670"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate.t:1670" spec="parameter.RealParameter" name="stateNode">1.0</parameter>
+    </state>
+
+    <init id="RandomTree.t:1670" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:1670" taxa="@1670">
+        <populationModel id="ConstantPopulation0.t:1670" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:1670" spec="parameter.RealParameter" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="YuleModel.t:1670" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:1670" tree="@Tree.t:1670"/>
+            <prior id="YuleBirthRatePrior.t:1670" name="distribution" x="@birthRate.t:1670">
+                <Uniform id="Uniform.10" name="distr" upper="Infinity"/>
+            </prior>
+            <distribution id="in2.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1670">
+                <taxonset id="in2" spec="TaxonSet">
+                    <taxon id="Clutia" spec="Taxon"/>
+                    <taxon id="Drypetes" spec="Taxon"/>
+                    <taxon id="Erythroxylum" spec="Taxon"/>
+                    <taxon id="Ixonanthes" spec="Taxon"/>
+                    <taxon id="Rca" spec="Taxon"/>
+                    <taxon id="Rhi" spec="Taxon"/>
+                    <taxon id="Rhizophora" spec="Taxon"/>
+                    <taxon id="Ricinus" spec="Taxon"/>
+                    <taxon id="Rtu" spec="Taxon"/>
+                    <taxon id="Sap" spec="Taxon"/>
+                </taxonset>
+            </distribution>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.1670" spec="ThreadedTreeLikelihood" data="@1670" tree="@Tree.t:1670">
+                <siteModel id="SiteModel.s:1670" spec="SiteModel">
+                    <parameter id="mutationRate.s:1670" spec="parameter.RealParameter" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:1670" spec="parameter.RealParameter" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:1670" spec="parameter.RealParameter" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:1670" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:1670" spec="beast.evolution.branchratemodel.StrictClockModel">
+                    <parameter id="clockRate.c:1670" spec="parameter.RealParameter" estimate="false" name="clock.rate">1.0</parameter>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="YuleBirthRateScaler.t:1670" spec="ScaleOperator" parameter="@birthRate.t:1670" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="YuleModelTreeScaler.t:1670" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:1670" weight="3.0"/>
+
+    <operator id="YuleModelTreeRootScaler.t:1670" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:1670" weight="3.0"/>
+
+    <operator id="YuleModelUniformOperator.t:1670" spec="Uniform" tree="@Tree.t:1670" weight="30.0"/>
+
+    <operator id="YuleModelSubtreeSlide.t:1670" spec="SubtreeSlide" tree="@Tree.t:1670" weight="15.0"/>
+
+    <operator id="YuleModelNarrow.t:1670" spec="Exchange" tree="@Tree.t:1670" weight="15.0"/>
+
+    <operator id="YuleModelWide.t:1670" spec="Exchange" isNarrow="false" tree="@Tree.t:1670" weight="3.0"/>
+
+    <operator id="YuleModelWilsonBalding.t:1670" spec="WilsonBalding" tree="@Tree.t:1670" weight="3.0"/>
+
+    <logger id="tracelog" spec="Logger" fileName="2570.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.1670"/>
+        <log id="TreeHeight.t:1670" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:1670"/>
+        <log idref="YuleModel.t:1670"/>
+        <log idref="birthRate.t:1670"/>
+        <log idref="in2.prior"/>
+    </logger>
+
+    <logger id="screenlog" spec="Logger" logEvery="1000">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:1670" spec="Logger" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:1670" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:1670"/>
+    </logger>
+
+    <operatorschedule id="OperatorSchedule" spec="OperatorSchedule"/>
+
+</run>
+
+</beast>

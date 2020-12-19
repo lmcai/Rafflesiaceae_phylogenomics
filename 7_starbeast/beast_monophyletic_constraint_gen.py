@@ -9,6 +9,7 @@ out=open('beast_monophyletic_constraint.txt','a')
 genes=os.listdir('.')
 genes=[g for g in genes if g.endswith('fasta')]
 j=1
+#j=56
 for g in genes:
 	x=open(g).readlines()
 	sp=[i.strip()[1:] for i in x if i.startswith('>')]
@@ -22,7 +23,7 @@ for g in genes:
 	j=j+1
 
 j=1
-
+#j=56
 out.write('\n\n#add the following after \"<log idref=\"ExtinctionFraction.t:Species\"/>\"..\n')
 for g in genes:
 	out.write("        <log idref=\"ingroup"+`j`+".prior\"/>\n")
@@ -30,25 +31,32 @@ for g in genes:
 
 out.close()
 
+#there are two 1670 and two 1653, add '1' for one of the genes
+
 #prepare the starting tree
 #
 import os
-import ete3
 x=os.listdir('.')
 x=[i.split('.')[0] for i in x if i.startswith(('1','2','3','4','5','8'))]
 from ete3 import Tree
 for i in x:
-	t=Tree('../3_na_tree_1to1_yang_subtree/'+i+'.inclade1.ortho1.tre',format=1)
-	sp=open(i+'.trees').readlines()
-	sp=[j.strip() for j in sp[5:20] if j.startswith('\t\t\t')]
+	#t=Tree('../3_na_tree_1to1_yang_subtree/'+i+'.inclade1.ortho1.tre',format=1)
+	#sp=open(i+'.trees').readlines()
+	#sp=[j.strip() for j in sp[5:20] if j.startswith('\t\t\t')]
+	#sp2out=[leaf.name for leaf in t if leaf.name.startswith(tuple(sp))]
+	i=i.strip()
+	t=Tree('../3_na_tree_1to1_yang_subtree/'+i.split('.')[0]+'.inclade1.ortho1.tre',format=1)
+	sp=open('/n/home08/lmcai/EX26_short300bp/'+i).readlines()
+	sp=[j.strip()[1:] for j in sp if j.startswith('>')]
 	sp2out=[leaf.name for leaf in t if leaf.name.startswith(tuple(sp))]
 	t.prune(sp2out)
 	ingroup=[leaf.name for leaf in t if leaf.name.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes'))]
 	#monophyletic ingroup tree
 	if t.check_monophyly(values=ingroup, target_attr="name")[0]:
-		t.write(outfile=i+'.tre',format=1)
+		t.write(outfile=i.split('.')[0]+'.tre',format=1)
 	else:
-		t=Tree('misc/'+i+'.tre',format=1)
+		print i
+		#t=Tree('misc/'+i+'.tre',format=1)
 		
 #These trees then need to be reformated to ultrametric tree with a relatively large root age so that all gene trees coalesce at the root of the species tree
 #in R

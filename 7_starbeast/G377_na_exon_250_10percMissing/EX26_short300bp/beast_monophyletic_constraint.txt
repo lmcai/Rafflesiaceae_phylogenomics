@@ -1,0 +1,383 @@
+            <distribution id="ingroup56.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:116">
+                <taxonset id="ingroup56" spec="TaxonSet">
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Erythroxylum"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup57.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1914">
+                <taxonset id="ingroup57" spec="TaxonSet">
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Ixonanthes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup58.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2934">
+                <taxonset id="ingroup58" spec="TaxonSet">
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rhi"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup59.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1644">
+                <taxonset id="ingroup59" spec="TaxonSet">
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup60.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2039">
+                <taxonset id="ingroup60" spec="TaxonSet">
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup61.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1670">
+                <taxonset id="ingroup61" spec="TaxonSet">
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Ixonanthes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup62.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:16701">
+                <taxonset id="ingroup62" spec="TaxonSet">
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Ixonanthes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup63.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2827">
+                <taxonset id="ingroup63" spec="TaxonSet">
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Drypetes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup64.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2606">
+                <taxonset id="ingroup64" spec="TaxonSet">
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Ricinus"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup65.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1708">
+                <taxonset id="ingroup65" spec="TaxonSet">
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rhi"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup66.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2587">
+                <taxonset id="ingroup66" spec="TaxonSet">
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup67.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2918">
+                <taxonset id="ingroup67" spec="TaxonSet">
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup68.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1678">
+                <taxonset id="ingroup68" spec="TaxonSet">
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup69.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2570">
+                <taxonset id="ingroup69" spec="TaxonSet">
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Drypetes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup70.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2260">
+                <taxonset id="ingroup70" spec="TaxonSet">
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Clutia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup71.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1547">
+                <taxonset id="ingroup71" spec="TaxonSet">
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup72.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1971">
+                <taxonset id="ingroup72" spec="TaxonSet">
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup73.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1374">
+                <taxonset id="ingroup73" spec="TaxonSet">
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Clutia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup74.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:16531">
+                <taxonset id="ingroup74" spec="TaxonSet">
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup75.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1984">
+                <taxonset id="ingroup75" spec="TaxonSet">
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Ricinus"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup76.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2406">
+                <taxonset id="ingroup76" spec="TaxonSet">
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Drypetes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup77.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2624">
+                <taxonset id="ingroup77" spec="TaxonSet">
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Galearia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup78.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2592">
+                <taxonset id="ingroup78" spec="TaxonSet">
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Erythroxylum"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup79.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2566">
+                <taxonset id="ingroup79" spec="TaxonSet">
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Rca"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Ixonanthes"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup80.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:1926">
+                <taxonset id="ingroup80" spec="TaxonSet">
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Drypetes"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Clutia"/>
+                </taxonset>
+            </distribution>
+            <distribution id="ingroup81.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:2883">
+                <taxonset id="ingroup81" spec="TaxonSet">
+                    <taxon idref="Clutia"/>
+                    <taxon idref="Ricinus"/>
+                    <taxon idref="Ixonanthes"/>
+                    <taxon idref="Erythroxylum"/>
+                    <taxon idref="Rhizophora"/>
+                    <taxon idref="Rhi"/>
+                    <taxon idref="Rtu"/>
+                    <taxon idref="Sap"/>
+                    <taxon idref="Galearia"/>
+                    <taxon idref="Drypetes"/>
+                </taxonset>
+            </distribution>
+
+
+#add the following after "<log idref="ExtinctionFraction.t:Species"/>"..
+        <log idref="ingroup56.prior"/>
+        <log idref="ingroup57.prior"/>
+        <log idref="ingroup58.prior"/>
+        <log idref="ingroup59.prior"/>
+        <log idref="ingroup60.prior"/>
+        <log idref="ingroup61.prior"/>
+        <log idref="ingroup62.prior"/>
+        <log idref="ingroup63.prior"/>
+        <log idref="ingroup64.prior"/>
+        <log idref="ingroup65.prior"/>
+        <log idref="ingroup66.prior"/>
+        <log idref="ingroup67.prior"/>
+        <log idref="ingroup68.prior"/>
+        <log idref="ingroup69.prior"/>
+        <log idref="ingroup70.prior"/>
+        <log idref="ingroup71.prior"/>
+        <log idref="ingroup72.prior"/>
+        <log idref="ingroup73.prior"/>
+        <log idref="ingroup74.prior"/>
+        <log idref="ingroup75.prior"/>
+        <log idref="ingroup76.prior"/>
+        <log idref="ingroup77.prior"/>
+        <log idref="ingroup78.prior"/>
+        <log idref="ingroup79.prior"/>
+        <log idref="ingroup80.prior"/>
+        <log idref="ingroup81.prior"/>
