@@ -1,0 +1,28 @@
+#NEXUS
+
+Begin taxa;
+	Dimensions ntax=9;
+		Taxlabels
+			Drypetes
+			Erythroxylum
+			Galearia
+			Ixonanthes
+			Rca
+			Rhi
+			Rhizophora
+			Ricinus
+			Rtu
+			;
+End;
+Begin trees;
+	Translate
+		   1 Drypetes,
+		   2 Erythroxylum,
+		   3 Galearia,
+		   4 Ixonanthes,
+		   5 Rca,
+		   6 Rhi,
+		   7 Rhizophora,
+		   8 Ricinus,
+		   9 Rtu
+;

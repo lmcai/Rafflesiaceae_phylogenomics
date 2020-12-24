@@ -10,6 +10,7 @@ genes=os.listdir('.')
 genes=[g for g in genes if g.endswith('fasta')]
 j=1
 #j=56
+#j=82
 for g in genes:
 	x=open(g).readlines()
 	sp=[i.strip()[1:] for i in x if i.startswith('>')]
@@ -24,6 +25,7 @@ for g in genes:
 
 j=1
 #j=56
+#j=82
 out.write('\n\n#add the following after \"<log idref=\"ExtinctionFraction.t:Species\"/>\"..\n')
 for g in genes:
 	out.write("        <log idref=\"ingroup"+`j`+".prior\"/>\n")
@@ -44,10 +46,11 @@ for i in x:
 	#sp=open(i+'.trees').readlines()
 	#sp=[j.strip() for j in sp[5:20] if j.startswith('\t\t\t')]
 	#sp2out=[leaf.name for leaf in t if leaf.name.startswith(tuple(sp))]
-	i=i.strip()
+	#i=i.strip()
 	t=Tree('../3_na_tree_1to1_yang_subtree/'+i.split('.')[0]+'.inclade1.ortho1.tre',format=1)
-	sp=open('/n/home08/lmcai/EX26_short300bp/'+i).readlines()
-	sp=[j.strip()[1:] for j in sp if j.startswith('>')]
+	#sp=open('/n/home08/lmcai/EX26_short300bp/'+i).readlines()
+	sp=open('G28_Pandaceae_manual_curate/'+i).readlines()
+	t
 	sp2out=[leaf.name for leaf in t if leaf.name.startswith(tuple(sp))]
 	t.prune(sp2out)
 	ingroup=[leaf.name for leaf in t if leaf.name.startswith(('Sap','Rhi','Rca','Rtu','Ery', 'Galearia', 'Drypetes', 'Clutia', 'Ricinus', 'Ixonanthes'))]

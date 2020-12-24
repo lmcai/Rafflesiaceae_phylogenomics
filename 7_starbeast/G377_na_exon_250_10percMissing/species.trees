@@ -1,0 +1,36 @@
+#NEXUS
+
+Begin taxa;
+	Dimensions ntax=13;
+		Taxlabels
+			Clu
+			Cro
+			Dry
+			Ery
+			Gal
+			Ixo
+			Oxa
+			Rc
+			Rh
+			Rhiz
+			Ric
+			Rt
+			Sa
+			;
+End;
+Begin trees;
+	Translate
+		   1 Clu,
+		   2 Cro,
+		   3 Dry,
+		   4 Ery,
+		   5 Gal,
+		   6 Ixo,
+		   7 Oxa,
+		   8 Rc,
+		   9 Rh,
+		  10 Rhiz,
+		  11 Ric,
+		  12 Rt,
+		  13 Sa
+;

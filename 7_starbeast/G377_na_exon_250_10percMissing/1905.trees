@@ -1,0 +1,30 @@
+#NEXUS
+
+Begin taxa;
+	Dimensions ntax=10;
+		Taxlabels
+			Clutia
+			Drypetes
+			Erythroxylum
+			Galearia
+			Oxalis
+			Rca
+			Rhi
+			Rhizophora
+			Ricinus
+			Rtu
+			;
+End;
+Begin trees;
+	Translate
+		   1 Clutia,
+		   2 Drypetes,
+		   3 Erythroxylum,
+		   4 Galearia,
+		   5 Oxalis,
+		   6 Rca,
+		   7 Rhi,
+		   8 Rhizophora,
+		   9 Ricinus,
+		  10 Rtu
+;

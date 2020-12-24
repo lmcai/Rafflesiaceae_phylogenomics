@@ -1,0 +1,32 @@
+#NEXUS
+
+Begin taxa;
+	Dimensions ntax=11;
+		Taxlabels
+			Clutia
+			Crossopetalum
+			Drypetes
+			Erythroxylum
+			Ixonanthes
+			Oxalis
+			Rca
+			Rhizophora
+			Ricinus
+			Rtu
+			Sap
+			;
+End;
+Begin trees;
+	Translate
+		   1 Clutia,
+		   2 Crossopetalum,
+		   3 Drypetes,
+		   4 Erythroxylum,
+		   5 Ixonanthes,
+		   6 Oxalis,
+		   7 Rca,
+		   8 Rhizophora,
+		   9 Ricinus,
+		  10 Rtu,
+		  11 Sap
+;

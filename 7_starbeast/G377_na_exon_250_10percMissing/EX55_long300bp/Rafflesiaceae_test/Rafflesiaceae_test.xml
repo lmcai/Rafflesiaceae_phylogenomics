@@ -356,6 +356,10 @@ name="alignment">
                     <taxon idref="Rt"/>
                     <taxon idref="Sa"/>
                 </taxonset>
+                <LogNormal id="LogNormalDistributionModel.11" meanInRealSpace="true" name="distr">
+                    <parameter id="RealParameter.10" spec="parameter.RealParameter" estimate="false" name="M">105.0</parameter>
+                    <parameter id="RealParameter.11" spec="parameter.RealParameter" estimate="false" lower="0.0" name="S" upper="5.0">1.5</parameter>
+                </LogNormal>
             </distribution>
         </distribution>
         <distribution id="likelihood" spec="util.CompoundDistribution">
