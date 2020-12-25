@@ -3323,32 +3323,32 @@ name="alignment">
         <parameter id="molecularClockRate.c:1644" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
         <parameter id="molecularClockRate.c:2877" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
         <parameter id="molecularClockRate.c:2418" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
-        <parameter id="molecularClockRate.c:2143" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1664" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1890" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1905" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:3031" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:3061" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1621" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2573" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:3034" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2947" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2382" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1649" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2080" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2850" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2679" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2878" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2314" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2637" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1436" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:1997" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2384" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2999" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2810" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2787" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2620" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="molecularClockRate.c:2440" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="molecularClockRate.c:2143" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1664" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1890" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1905" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:3031" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:3061" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1621" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2573" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:3034" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2947" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2382" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1649" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2080" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2850" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2679" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2878" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2314" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2637" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1436" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:1997" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2384" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2999" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2810" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2787" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2620" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+        <parameter id="molecularClockRate.c:2440" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
     </state>
 
     <init spec='beast.util.TreeParser' id='NewickTree.t:2648' initial="@Tree.t:2648" taxa='@2648' IsLabelledNewick="true" newick="((((((Rhizophora:20.84508557,Erythroxylum:20.84508557)99.8:17.77168261,Ixonanthes:38.61676818)72.8:19.48969858,(Clutia:29.6576984,Ricinus:29.6576984)97:28.44876836)68.9:37.70911206,(((Rca:19.29267817,Rtu:19.29267817)99.7:19.64107292,Rhi:38.93375109)0:0.3898233791,Sap:39.32357446)100:56.49200435)77.7:1.474775895,(Galearia:48.5095858,Drypetes:48.5095858)0:48.78076892)83.9:19.02157744,(Crossopetalum:58.28315566,Oxalis:58.28315566)97:58.0287765);"/>
@@ -7549,7 +7549,7 @@ name="alignment">
                     <taxon idref="Sa"/>
                 </taxonset>
                 <LogNormal id="LogNormalDistributionModel.220" meanInRealSpace="true" name="distr">
-                    <parameter id="RealParameter.233" spec="parameter.RealParameter" estimate="false" name="M">109.0</parameter>
+                    <parameter id="RealParameter.233" spec="parameter.RealParameter" estimate="false" name="M">89.0</parameter>
                     <parameter id="RealParameter.234" spec="parameter.RealParameter" estimate="false" lower="0.0" name="S" upper="5.0">0.1</parameter>
                 </LogNormal>
             </distribution>

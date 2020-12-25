@@ -6198,7 +6198,7 @@ name="taxa">
                     <taxon idref="Sa"/>
                 </taxonset>
                 <LogNormal id="LogNormalDistributionModel.220" meanInRealSpace="true" name="distr">
-                    <parameter id="RealParameter.233" spec="parameter.RealParameter" estimate="false" name="M">109.0</parameter>
+                    <parameter id="RealParameter.233" spec="parameter.RealParameter" estimate="false" name="M">89.0</parameter>
                     <parameter id="RealParameter.234" spec="parameter.RealParameter" estimate="false" lower="0.0" name="S" upper="5.0">0.05</parameter>
                 </LogNormal>
             </distribution>
