@@ -1,3 +1,4 @@
+#/usr/bin/python
 from ete3 import Tree
 import os
 import ete3
@@ -36,17 +37,32 @@ for j in x:
 x=open('../G2141.branch_len.tsv').readlines()
 x=[i.split()[0] for i in x[1:]]
 out=open('G2141.branch_len.tsv','a')
-out.write('ID\tstem_raff_branch_len\tancestor_of_stem_raff_bran_len\tBP\n')
+out.write('ID\tstem_raff_branch_len\tancestor_of_stem_raff_bran_len\tBP\tdist2root\n')
 for j in x:
 	try:
 		t=Tree(j+'.rooted.tre',format=1)
 		raff=[i.name for i in t if i.name.startswith(('Sap','Rca','Rtu','Rhi')) and not i.name.startswith('Rhizo')]
-		if len(raff)>1:
-			raff_node=t.get_common_ancestor(raff)
-			out.write(j+'\t'+str(raff_node.dist)+'\t'+str(raff_node.get_ancestors()[0].dist)+'\t'+raff_node.get_ancestors()[0].name+'\n')
-		elif len(raff)==1:
-			raff_node=t&raff[0]
-			out.write(j+'\tNA\tNA\t'+raff_node.get_ancestors()[0].name+'\n')
+		#if raff are monophyletic
+		if t.check_monophyly(values=raff, target_attr="name")[0]:
+			if len(raff)>1:
+				raff_node=t.get_common_ancestor(raff)
+				out.write(j+'\t'+str(raff_node.dist)+'\t'+str(raff_node.get_ancestors()[0].dist)+'\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
+			elif len(raff)==1:
+				raff_node=t&raff[0]
+				out.write(j+'\tNA\tNA\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
+		#choose the node with most species
+		else:
+			for leaf in t:
+				if leaf.name in raff:leaf.add_features(raff='Y')
+			curr_sp_num=0
+			for node in t.get_monophyletic(values='Y', target_attr="raff"):
+				if len(node.get_leaf_names())>curr_sp_num:
+					curr_sp_num=len(node.get_leaf_names())
+					raff_node=node
+			if curr_sp_num>1:
+				out.write(j+'\t'+str(raff_node.dist)+'\t'+str(raff_node.get_ancestors()[0].dist)+'\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
+			elif curr_sp_num==1:
+				out.write(j+'\tNA\tNA\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
 	except IOError:
 		print j
 	except IndexError:
@@ -54,7 +70,48 @@ for j in x:
 	except ete3.parser.newick.NewickError:
 		print j
 
+################
+##IMPORTANT!!! ete3 generate incorrect node labels when rerooting, see this paper https://academic.oup.com/mbe/article/34/6/1535/3077051
+#To deal with this problem, I reroot the trees in Notung, using the following command. Then I get the BP support values using ete3
+java -jar ~/programs/Notung-2.8.1.3-beta.jar -s sp.tre -b gene.list --root --treeoutput newick --speciestag prefix --silent --progressbar --outputdir rooted_geneTr --nolosses
 
+#/usr/bin/python
+from ete3 import Tree
+import os
+x=os.listdir('.')
+
+out=open('G2141.BP.tsv','a')
+out.write('ID\tBP\n')
+for j in x:
+	t=Tree(j,format=1)
+	BP='NA'
+	raff=[i.name for i in t if i.name.startswith(('Sap','Rca','Rtu','Rhi')) and not i.name.startswith('Rhizo')]
+	if len(raff)>1:
+		#if rafflesiaceae species are monophyletic
+		if t.check_monophyly(values=raff, target_attr="name")[0]:
+			raff_node=t.get_common_ancestor(raff)
+			BP=raff_node.get_ancestors()[0].name
+		else:
+			#print('nonmonophyletic raff '+j)
+			for leaf in t:
+					if leaf.name in raff:leaf.add_features(raff='Y')
+			curr_sp_num=0
+			for node in t.get_monophyletic(values='Y', target_attr="raff"):
+				if len(node.get_leaf_names())>curr_sp_num:
+					BP=node.get_ancestors()[0].name
+					curr_sp_num=len(node.get_leaf_names())
+	elif len(raff)==1:
+		raff_node=t&raff[0]
+		BP=raff_node.get_ancestors()[0].name
+	else:
+		print j
+	out.write(j.split('.')[0]+'\t'+BP+'\n')
+
+
+
+###############
+
+#The following gene trees do not have outgroups from the 100 bootstrap run in IQTREE
 3024.aln.treefile
 2874.aln.treefile
 2871.aln.treefile
