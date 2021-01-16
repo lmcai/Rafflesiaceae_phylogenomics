@@ -22,3 +22,4 @@ java -jar /n/home08/lmcai/programs/Constrained-search/astral.5.6.9.jar -i G2141.
 mpest mpest.LL.ctl
 
 #in Phybase, conduct pairwise likelihood ratio test
+library(phybase)
