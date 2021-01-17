@@ -23,3 +23,9 @@ mpest mpest.LL.ctl
 
 #in Phybase, conduct pairwise likelihood ratio test
 library(phybase)
+#read in the null tree, which is the tree with lower likelihood in the pairwise comparison
+x=readLines('H11.mpest.tre')
+for (i in 1:100){
+	genetrees = sim.coal.mpest(x[1],ngenetree=2299)
+	write(paste(genetrees,collapse='\n'),paste('./H11.sim',i,'.genetrees',sep=''))
+}
