@@ -85,3 +85,69 @@ au_output.close()
 pp_output.close()
 sh_output.close()
 kh_output.close()
+
+#x=open('AU_sum.includePandaceae.tsv').readlines()
+x=open('AU_sum.tsv').readlines()
+a={}
+for l in x[1:]:
+	b=l.split()
+	c=0
+	bestH=''
+	for i in range(1,len(b)):
+		try:
+			if float(b[i])>c:
+				bestH='H'+str(i)
+				c=float(b[i])
+		except ValueError:pass
+	try:a[bestH].append(c)
+	except KeyError:a[bestH]=[c]
+
+
+#out=open('AU_rank1.indudePandaceae.txt','a')
+out=open('AU_rank1.txt','a')
+for key in a:
+	out.write(key+'\t'+'\t'.join([str(j) for j in a[key]])+'\n')
+
+x=open('KH_sum.tsv').readlines()
+a={}
+for l in x[1:]:
+	b=l.split()
+	c=0
+	bestH=''
+	for i in range(1,len(b)):
+		try:
+			if float(b[i])>c:
+				bestH='H'+str(i)
+				c=float(b[i])
+		except ValueError:pass
+	try:a[bestH].append(c)
+	except KeyError:a[bestH]=[c]
+
+
+#out=open('AU_rank1.indudePandaceae.txt','a')
+out=open('KH_rank1.txt','a')
+for key in a:
+	out.write(key+'\t'+'\t'.join([str(j) for j in a[key]])+'\n')
+
+x=open('SH_sum.tsv').readlines()
+a={}
+for l in x[1:]:
+	b=l.split()
+	c=0
+	bestH=''
+	for i in range(1,len(b)):
+		try:
+			if float(b[i])>c:
+				bestH='H'+str(i)
+				c=float(b[i])
+		except ValueError:pass
+	try:a[bestH].append(c)
+	except KeyError:a[bestH]=[c]
+
+
+#out=open('AU_rank1.indudePandaceae.txt','a')
+out=open('SH_rank1.txt','a')
+for key in a:
+	out.write(key+'\t'+'\t'.join([str(j) for j in a[key]])+'\n')
+
+#plot in R
