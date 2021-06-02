@@ -54,7 +54,11 @@ for i in x:
 #make bipartition support value
 module load intel/17.0.4-fasrc01 RAxML/8.2.11-fasrc01
 raxmlHPC -f b -t L2000.500.ML.mpest.tre -z L2000.500.BP.mpest.trees -m GTRGAMMA -n L2000.500.mpest
-
+raxmlHPC -f b -t L2000.1000.ML.mpest.tre -z L2000.1000.BP.mpest.trees -m GTRGAMMA -n L2000.1000.mpest
+raxmlHPC -f b -t L2000.2000.ML.mpest.tre -z L2000.2000.BP.mpest.trees -m GTRGAMMA -n L2000.2000.mpest
+raxmlHPC -f b -t L2000.3000.ML.mpest.tre -z L2000.3000.BP.mpest.trees -m GTRGAMMA -n L2000.3000.mpest
+raxmlHPC -f b -t L2000.4000.ML.mpest.tre -z L2000.4000.BP.mpest.trees -m GTRGAMMA -n L2000.4000.mpest
+raxmlHPC -f b -t L2000.5000.ML.mpest.tre -z L2000.5000.BP.mpest.trees -m GTRGAMMA -n L2000.5000.mpest
 
 
 #########################################
