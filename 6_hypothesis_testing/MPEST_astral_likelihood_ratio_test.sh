@@ -21,11 +21,11 @@ java -jar /n/home08/lmcai/programs/Constrained-search/astral.5.6.9.jar -i G2141.
 #calculate tree likelihood in MPEST
 mpest mpest.LL.ctl
 
-#in Phybase, conduct pairwise likelihood ratio test
+#in R, use Phybase to conduct pairwise likelihood ratio test
 library(phybase)
 #read in the null tree, which is the tree with lower likelihood in the pairwise comparison
 x=readLines('H11.mpest.tre')
 for (i in 1:100){
-	genetrees = sim.coal.mpest(x[1],ngenetree=2299)
+	genetrees = sim.coal.mpest(x[1],ngenetree=2141)
 	write(paste(genetrees,collapse='\n'),paste('./H11.sim',i,'.genetrees',sep=''))
 }
