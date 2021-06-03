@@ -36,8 +36,8 @@ for f in fs:
 		out.write(t.write(format=9)+'\n')
 	out.close()
 
-#x=open('L2000.5000.trees').readlines()
-#out=open('L2000.5000.rooted.trees','a')
+#x=open('L1000.5000.trees').readlines()
+#out=open('L1000.5000.rooted.trees','a')
 #for l in x:
 #	t=Tree(l)
 #	t.set_outgroup('Crossopetalum')
@@ -53,14 +53,92 @@ for i in x:
 
 #make bipartition support value
 module load intel/17.0.4-fasrc01 RAxML/8.2.11-fasrc01
-raxmlHPC -f b -t L2000.500.ML.mpest.tre -z L2000.500.BP.mpest.trees -m GTRGAMMA -n L2000.500.mpest
-raxmlHPC -f b -t L2000.1000.ML.mpest.tre -z L2000.1000.BP.mpest.trees -m GTRGAMMA -n L2000.1000.mpest
-raxmlHPC -f b -t L2000.2000.ML.mpest.tre -z L2000.2000.BP.mpest.trees -m GTRGAMMA -n L2000.2000.mpest
-raxmlHPC -f b -t L2000.3000.ML.mpest.tre -z L2000.3000.BP.mpest.trees -m GTRGAMMA -n L2000.3000.mpest
-raxmlHPC -f b -t L2000.4000.ML.mpest.tre -z L2000.4000.BP.mpest.trees -m GTRGAMMA -n L2000.4000.mpest
-raxmlHPC -f b -t L2000.5000.ML.mpest.tre -z L2000.5000.BP.mpest.trees -m GTRGAMMA -n L2000.5000.mpest
+raxmlHPC -f b -t L1000.500.ML.mpest.tre -z L1000.500.BP.mpest.trees -m GTRGAMMA -n L1000.500.mpest
+raxmlHPC -f b -t L1000.1000.ML.mpest.tre -z L1000.1000.BP.mpest.trees -m GTRGAMMA -n L1000.1000.mpest
+raxmlHPC -f b -t L1000.2000.ML.mpest.tre -z L1000.2000.BP.mpest.trees -m GTRGAMMA -n L1000.2000.mpest
+raxmlHPC -f b -t L1000.3000.ML.mpest.tre -z L1000.3000.BP.mpest.trees -m GTRGAMMA -n L1000.3000.mpest
+raxmlHPC -f b -t L1000.4000.ML.mpest.tre -z L1000.4000.BP.mpest.trees -m GTRGAMMA -n L1000.4000.mpest
+raxmlHPC -f b -t L1000.5000.ML.mpest.tre -z L1000.5000.BP.mpest.trees -m GTRGAMMA -n L1000.5000.mpest
 
+#########################################
+#Get gene tree frequency
+H1=0
+H2=0
+H3=0
+H4=0
+H5=0
+H6=0
+H7=0
+H8=0
+H9=0
+H10=0
+H11=0
+H12=0
+H13=0
+H14=0
+H15=0
 
+for i in range(0,5000):
+	t=Tree('L2000/G'+`i+1`+'/'+`i+1`+'.L2000.treefile')
+	t.set_outgroup('Crossopetalum')
+	N=t&'Sap'
+	sis=[node.name for node in N.get_ancestors()[0]]
+	sis.sort()
+	if sis == ['Clutia','Sap']:H1=H1+1
+	elif sis == ['Drypetes','Sap']:H2=H2+1
+	elif sis == ['Galearia','Sap']:H3=H3+1
+	elif sis == ['Rhizophora','Sap']:H4=H4+1
+	elif sis == ['Clutia','Drypetes','Sap']:H5=H5+1
+	elif sis == ['Clutia','Galearia','Sap']:H6=H6+1
+	elif sis == ['Clutia','Rhizophora','Sap']:H7=H7+1
+	elif sis == ['Drypetes','Galearia','Sap']:H8=H8+1
+	elif sis == ['Drypetes','Rhizophora','Sap']:H9=H9+1
+	elif sis == ['Galearia','Rhizophora','Sap']:H10=H10+1
+	elif sis == ['Clutia','Drypetes','Galearia','Sap']:H11=H11+1
+	elif sis == ['Clutia','Drypetes','Rhizophora','Sap']:H12=H12+1
+	elif sis == ['Drypetes','Galearia','Rhizophora','Sap']:H13=H13+1
+	elif sis == ['Clutia','Galearia','Rhizophora','Sap']:H14=H14+1
+	elif sis == ['Clutia','Drypetes','Galearia','Rhizophora','Sap']:H15=H15+1
+
+H1=0
+H2=0
+H3=0
+H4=0
+H5=0
+H6=0
+H7=0
+H8=0
+H9=0
+H10=0
+H11=0
+H12=0
+H13=0
+H14=0
+H15=0
+
+x=open('../2_geneTr_brLen_sim/G2141.mpest.5clades.10000sim.mubrlen.trees').readlines()
+for i in range(0,5000):
+	t=Tree(x[i])
+	t.set_outgroup('Crossopetalum')
+	N=t&'Sap'
+	sis=[node.name for node in N.get_ancestors()[0]]
+	sis.sort()
+	if sis == ['Clutia','Sap']:H1=H1+1
+	elif sis == ['Drypetes','Sap']:H2=H2+1
+	elif sis == ['Galearia','Sap']:H3=H3+1
+	elif sis == ['Rhizophora','Sap']:H4=H4+1
+	elif sis == ['Clutia','Drypetes','Sap']:H5=H5+1
+	elif sis == ['Clutia','Galearia','Sap']:H6=H6+1
+	elif sis == ['Clutia','Rhizophora','Sap']:H7=H7+1
+	elif sis == ['Drypetes','Galearia','Sap']:H8=H8+1
+	elif sis == ['Drypetes','Rhizophora','Sap']:H9=H9+1
+	elif sis == ['Galearia','Rhizophora','Sap']:H10=H10+1
+	elif sis == ['Clutia','Drypetes','Galearia','Sap']:H11=H11+1
+	elif sis == ['Clutia','Drypetes','Rhizophora','Sap']:H12=H12+1
+	elif sis == ['Drypetes','Galearia','Rhizophora','Sap']:H13=H13+1
+	elif sis == ['Clutia','Galearia','Rhizophora','Sap']:H14=H14+1
+	elif sis == ['Clutia','Drypetes','Galearia','Rhizophora','Sap']:H15=H15+1
+	
 #########################################
 sh iqtree.sh 500 2000
 sh iqtree.sh 500 3000
@@ -108,11 +186,11 @@ sh iqtree.sh 1500 5000
 #mpest LRT
 #in R
 library(phybase)
-x=readLines('../L2000.5000.H5.mpest.tre')
+x=readLines('../L1000.5000.H5.mpest.tre')
 for (i in 1:100){
 	genetrees = sim.coal.mpest(x[1],ngenetree=5000)
 	write(paste(genetrees,collapse='\n'),paste('./H11.sim',i,'.genetrees',sep=''))
 }
 
 sed "s/xxx/$1/g" mpest.LL.ctl >tem.ctl
-mpest tem.ctl | tail -1 >>L2000.500.H11.LL
+mpest tem.ctl | tail -1 >>L1000.500.H11.LL
