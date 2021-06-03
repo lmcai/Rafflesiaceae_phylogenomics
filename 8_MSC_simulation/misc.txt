@@ -103,3 +103,16 @@ sh iqtree.sh 1500 5000
 ((Rhizophora,Galearia,Drypetes,Sap),Clutia,Crossopetalum)
 ((Clutia,Galearia,Rhizophora,Sap),Drypetes,Crossopetalum)
 ((Clutia,Galearia,Rhizophora,Sap,Drypetes),Crossopetalum)
+
+#########################################
+#mpest LRT
+#in R
+library(phybase)
+x=readLines('../L2000.5000.H5.mpest.tre')
+for (i in 1:100){
+	genetrees = sim.coal.mpest(x[1],ngenetree=5000)
+	write(paste(genetrees,collapse='\n'),paste('./H11.sim',i,'.genetrees',sep=''))
+}
+
+sed "s/xxx/$1/g" mpest.LL.ctl >tem.ctl
+mpest tem.ctl | tail -1 >>L2000.500.H11.LL
