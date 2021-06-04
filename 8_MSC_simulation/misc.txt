@@ -138,7 +138,40 @@ for i in range(0,5000):
 	elif sis == ['Drypetes','Galearia','Rhizophora','Sap']:H13=H13+1
 	elif sis == ['Clutia','Galearia','Rhizophora','Sap']:H14=H14+1
 	elif sis == ['Clutia','Drypetes','Galearia','Rhizophora','Sap']:H15=H15+1
-	
+
+
+from ete3 import Tree
+import os
+x=os.listdir('9_IQTREE_topology_tests/4_na_aln_1to1/tem/')
+#x=os.listdir('4_na_aln_1to1')
+#x=[i for i in x if i.endswith('.treefile')]
+
+for i in x:
+	t=Tree('4_na_aln_1to1/'+i.split('.')[0]+'.aln.treefile')
+	try:
+		t.prune(['Clutia','Drypetes','Galearia','Rhizophora','Sap','Crossopetalum'])
+		t.set_outgroup('Crossopetalum')
+		N=t&'Sap'
+		sis=[node.name for node in N.get_ancestors()[0]]
+		sis.sort()
+		if sis == ['Clutia','Sap']:H1=H1+1
+		elif sis == ['Drypetes','Sap']:H2=H2+1
+		elif sis == ['Galearia','Sap']:H3=H3+1
+		elif sis == ['Rhizophora','Sap']:H4=H4+1
+		elif sis == ['Clutia','Drypetes','Sap']:H5=H5+1
+		elif sis == ['Clutia','Galearia','Sap']:H6=H6+1
+		elif sis == ['Clutia','Rhizophora','Sap']:H7=H7+1
+		elif sis == ['Drypetes','Galearia','Sap']:H8=H8+1
+		elif sis == ['Drypetes','Rhizophora','Sap']:H9=H9+1
+		elif sis == ['Galearia','Rhizophora','Sap']:H10=H10+1
+		elif sis == ['Clutia','Drypetes','Galearia','Sap']:H11=H11+1
+		elif sis == ['Clutia','Drypetes','Rhizophora','Sap']:H12=H12+1
+		elif sis == ['Drypetes','Galearia','Rhizophora','Sap']:H13=H13+1
+		elif sis == ['Clutia','Galearia','Rhizophora','Sap']:H14=H14+1
+		elif sis == ['Clutia','Drypetes','Galearia','Rhizophora','Sap']:H15=H15+1
+	except:pass
+
+
 #########################################
 sh iqtree.sh 500 2000
 sh iqtree.sh 500 3000
@@ -186,11 +219,11 @@ sh iqtree.sh 1500 5000
 #mpest LRT
 #in R
 library(phybase)
-x=readLines('../L1000.5000.H5.mpest.tre')
+x=readLines('../L2000.10000.H5.mpest.tre')
 for (i in 1:100){
-	genetrees = sim.coal.mpest(x[1],ngenetree=5000)
+	genetrees = sim.coal.mpest(x[1],ngenetree=10000)
 	write(paste(genetrees,collapse='\n'),paste('./H11.sim',i,'.genetrees',sep=''))
 }
 
 sed "s/xxx/$1/g" mpest.LL.ctl >tem.ctl
-mpest tem.ctl | tail -1 >>L1000.500.H11.LL
+mpest tem.ctl | tail -1 >>L2000.10000.H5.LL
