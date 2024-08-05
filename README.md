@@ -5,7 +5,7 @@ Citation: Liming Cai, Liang Liu, Charles C Davis. The danger zone: the joint tra
 
 Subfolders:
 
-**1_Orthogroup_aln_prep**: Script used to merge two phylogenomics datasets from Cai et al. (2019) and Cai et al. (2021) in order to investigate the placement of Rafflesiaceae.
+**1_Data_merging**: Script used to merge two phylogenomics datasets from Cai et al. (2019) and Cai et al. (2021) in order to investigate the placement of Rafflesiaceae.
 
 **2_Alignment_geneTree**: MAFFT and IQTREE command line to generate sequence alingment and individual gene trees.
 
