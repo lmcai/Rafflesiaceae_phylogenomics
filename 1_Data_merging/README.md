@@ -1,4 +1,4 @@
-# Phylogenomic data preparation
+# Merge phylogenomic data from two studies
 
 We combined the phylogenomic data from Cai et al. 2019 (Widespread ancient whole‐genome duplications in Malpighiales coincide with Eocene global climatic upheaval) and Cai et al. 2021 (The perfect storm: gene tree estimation error, incomplete lineage sorting, and ancient gene flow explain the most recalcitrant ancient angiosperm clade, Malpighiales) with the following steps.
 
