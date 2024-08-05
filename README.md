@@ -9,7 +9,7 @@ Subfolders:
 
 **2_Alignment_geneTree**: MAFFT and IQTREE command line to generate sequence alingment and individual gene trees.
 
-**3_gene_shopping**: SORTDATE command line to extract phylogenetic properties of individual genes.
+**3_gene_shopping**: SORTADATE command line to extract phylogenetic properties of individual genes.
 
 **4_phylogeny_hypo_generation**: Command lines to infer species tree under the concatenation and coalescent models.
 
