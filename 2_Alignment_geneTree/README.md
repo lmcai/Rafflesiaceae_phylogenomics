@@ -6,4 +6,8 @@ Sequence alignment, gene tree inference, and data cleaning was conducted with th
 
 The bash script to run these analyses altogether for each gene is provided in `mafft_trimal_fasttree_iqtree.sh`.
 
-2. Use the pipeline from Yang and Smith (2016) to remove paralogs and create one-to-one ortholog for the cleaned dataset.
+2. Use the pipeline from Yang and Smith (2016) to remove paralogs and create one-to-one ortholog for the cleaned dataset with at least 10 species.
+
+```
+python yangya-phylogenomic_dataset_construction-489685700c2a/prune_paralogs_RT.py test/ .treefile na_tree_yang_pruned/ 10 malp.taxa
+```
