@@ -17,7 +17,7 @@ This resulted in 2141 orthogroups for final phylogenetic investigation.
 
 3. Second round alignment + tree inference
 
-   Use the mafft-linsi algorithm to align AA sequences, back translate to DNA codon alignment, then infer a final maximum likelihood gene trees with IQTREE (3000 ultrafast bootstrap replication and optimal models determined by ModelFinder).
+   Use the mafft-linsi algorithm to align **RAW** AA sequences (untrimmed), back translate to DNA codon alignment, then infer a final maximum likelihood gene trees with IQTREE (3000 ultrafast bootstrap replication and optimal models determined by ModelFinder).
 ```
 mafft --localpair --maxiterate 1000 aa.fas > aa.aln.fas
 pal2nal.pl aa.aln.fas na.fas -output fasta > na.aln.fas
