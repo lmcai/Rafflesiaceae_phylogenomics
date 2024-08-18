@@ -33,6 +33,6 @@ perl MACSE_ALFIX_V01/HMMcleanerV1_8_VR2/HMMcleanNuc_VR.pl 2675.na.aln.fas 30
 python hmmcleaner_codon_aware_masking.py 2675.na.aln.fas 2675.na.aln_Hmm30.log 
 
 ``` 
-This will generate *.masked.fas for each fasta file.
+This will generate *.masked.fas for each fasta file, with all codons consist of completely ambiguous characters ('-' and 'N') removed.
 
 5. Infer a final maximum likelihood gene trees with IQTREE (3000 ultrafast bootstrap replication and optimal models determined by ModelFinder).
