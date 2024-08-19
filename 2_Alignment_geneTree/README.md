@@ -35,4 +35,7 @@ python hmmcleaner_codon_aware_masking.py 2675.na.aln.fas 2675.na.aln_Hmm30.log
 ``` 
 This will generate *.masked.fas for each fasta file, with all codons consist of completely ambiguous characters ('-' and 'N') removed.
 
-5. Infer a final maximum likelihood gene trees with IQTREE (3000 ultrafast bootstrap replication and optimal models determined by ModelFinder).
+5. Infer a final maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication, -bnni to reduce the risk of overestimating branch supports with UFBoot, SH-aLRT support, and optimal models determined by ModelFinder).
+```
+iqtree -s $ID.na.mask.fas -o $OUT -pre $ID -nt AUTO -B 1000 -bnni -alrt 1000 -nm 3000 -redo
+```
