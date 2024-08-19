@@ -26,10 +26,10 @@ pal2nal.pl aa.aln.fas na.fas -output fasta > na.aln.fas
 
 4. Alignment masking with HmmCleaner
 
-Use the `HmmCleaner.pl` from [MACSE_ALFIX_V01](https://github.com/ranwez/MACSE_V2_PIPELINES/tree/master) to remove non-homologous regions in the alignment. I have difficulty installing HmmCleaner from cpan or source, but it was contained in the MACSE pipeline. A threshold of 30 was used after trying this parameter from 10 to 50. HmmCleaner directly delete the regions, which will break the codon position. So I write a custom python script `hmmcleaner_codon_aware_masking.py` to take in the log file from HmmCleaner and mask the corresponding position in the alignment.
+Use the `HmmCleaner.pl` from [MACSE_ALFIX_V01](https://github.com/ranwez/MACSE_V2_PIPELINES/tree/master) to remove non-homologous regions in the alignment. I have difficulty installing HmmCleaner from cpan or source, but it was contained in the MACSE pipeline. A threshold of 50 was used after trying this parameter from 10 to 50. HmmCleaner directly delete the regions, which will break the codon position. So I write a custom python script `hmmcleaner_codon_aware_masking.py` to take in the log file from HmmCleaner and mask the corresponding position in the alignment.
 
 ```
-perl MACSE_ALFIX_V01/HMMcleanerV1_8_VR2/HMMcleanNuc_VR.pl 2675.na.aln.fas 30
+perl MACSE_ALFIX_V01/HMMcleanerV1_8_VR2/HMMcleanNuc_VR.pl 2675.na.aln.fas 50
 python hmmcleaner_codon_aware_masking.py 2675.na.aln.fas 2675.na.aln_Hmm30.log 
 
 ``` 
