@@ -37,5 +37,5 @@ This will generate *.masked.fas for each fasta file, with all codons consisting 
 
 5. Infer a final maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication, -bnni to reduce the risk of overestimating branch supports with UFBoot, and optimal models determined by ModelFinder).
 ```
-iqtree -s $ID.na.mask.fas -o $OUT -pre $ID -nt AUTO -B 1000 -bnni -nm 3000 -redo
+iqtree2 -s $ID.na.mask.fas -o $OUTGROUP -st CODON -T AUTO -B 1000 -bnni -redo
 ```
