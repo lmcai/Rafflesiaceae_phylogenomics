@@ -1,8 +1,8 @@
 # Sequence alignment, gene tree inference, data cleaning
 
-Sequence alignment, gene tree inference, and data cleaning was conducted with the following steps:
+Sequence alignment, gene tree inference, and data cleaning were conducted with the following steps:
 
-1. First round alignment + tree inference
+1. First-round alignment + tree inference
   
    Use the mafft-linsi algorithm to align DNA sequences, trim with trimAL (-gt 0.10), remove outgroup sequences (non-Malpighiales) with `get_outgroup.py`, then infer a preliminary maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication and optimal models determined by ModelFinder).
 
@@ -26,16 +26,16 @@ pal2nal.pl aa.aln.fas na.fas -output fasta > na.aln.fas
 
 4. Alignment masking with HmmCleaner
 
-Use the `HmmCleaner.pl` from [MACSE_ALFIX_V01](https://github.com/ranwez/MACSE_V2_PIPELINES/tree/master) to remove non-homologous regions in the alignment. I have difficulty installing HmmCleaner from cpan or source, but it was contained in the MACSE pipeline. A threshold of 50 was used after trying this parameter from 10 to 50. HmmCleaner directly delete the regions, which will break the codon position. So I write a custom python script `hmmcleaner_codon_aware_masking.py` to take in the log file from HmmCleaner and mask the corresponding position in the alignment.
+Use the `HmmCleaner.pl` from [MACSE_ALFIX_V01](https://github.com/ranwez/MACSE_V2_PIPELINES/tree/master) to remove non-homologous regions in the alignment. I have difficulty installing HmmCleaner from cpan or source, but it was contained in the MACSE pipeline. A threshold of 50 was used after trying this parameter from 10 to 50. HmmCleaner directly deletes the regions, which will break the codon position. So I write a custom Python script `hmmcleaner_codon_aware_masking.py` to take in the log file from HmmCleaner and mask the corresponding position in the alignment.
 
 ```
 perl MACSE_ALFIX_V01/HMMcleanerV1_8_VR2/HMMcleanNuc_VR.pl 2675.na.aln.fas 50
 python hmmcleaner_codon_aware_masking.py 2675.na.aln.fas 2675.na.aln_Hmm30.log 
 
 ``` 
-This will generate *.masked.fas for each fasta file, with all codons consist of completely ambiguous characters ('-' and 'N') removed.
+This will generate *.masked.fas for each fasta file, with all codons consisting of completely ambiguous characters ('-' and 'N') removed.
 
-5. Infer a final maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication, -bnni to reduce the risk of overestimating branch supports with UFBoot, SH-aLRT support, and optimal models determined by ModelFinder).
+5. Infer a final maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication, -bnni to reduce the risk of overestimating branch supports with UFBoot, and optimal models determined by ModelFinder).
 ```
-iqtree -s $ID.na.mask.fas -o $OUT -pre $ID -nt AUTO -B 1000 -bnni -alrt 1000 -nm 3000 -redo
+iqtree -s $ID.na.mask.fas -o $OUT -pre $ID -nt AUTO -B 1000 -bnni -nm 3000 -redo
 ```
