@@ -44,7 +44,7 @@ from Bio.Align import MultipleSeqAlignment
 
 # Function to check if a site is ambiguous
 def is_ambiguous(site):
-    ambiguous_chars = {"N", "-"}
+    ambiguous_chars = {"N", "-","?"}
     return all(base in ambiguous_chars for base in site)
 
 # Function to remove codons with ambiguous sites
@@ -55,7 +55,8 @@ def remove_ambiguous_codons(alignment):
     new_sequences = [""] * num_seqs 
     for i in range(0, alignment.get_alignment_length(), codon_size):
         codon_sites = alignment[:, i:i+codon_size]
-        if any(is_ambiguous(codon_sites[:, j]) for j in range(codon_size)):
+        ambiguous_count = sum(is_ambiguous(codon) for codon in codon_sites)
+        if (any(is_ambiguous(codon_sites[:, j]) for j in range(codon_size))) or (ambiguous_count>0.8*num_seqs):
             continue  # Skip this codon if any site is ambiguous
         #new_alignment.append(codon_sites)
         for j in range(num_seqs):
@@ -69,6 +70,6 @@ alignment = AlignIO.read(output_file+'.tem.fas', "fasta")
 cleaned_alignment = remove_ambiguous_codons(alignment)
 
 # Convert the cleaned alignment back to a string and save it to a file
-SeqIO.write(cleaned_alignment, output_file+'.mask.fas', "fasta")
+SeqIO.write(cleaned_alignment, output_file+'.na.mask.fas', "fasta")
 
 os.system("rm "+output_file+'.tem.fas')  
