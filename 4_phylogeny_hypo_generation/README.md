@@ -9,3 +9,9 @@ java -jar ../../Astral/astral.5.7.8.jar -q G2141.aster4.tre -i G2141.aster.genet
 
 java -jar ../../Astral/astral.5.7.8.jar -q G2141.aster4.tre -i G2141.aster.genetree.trees -t 10 -o G2141.astral_polytomy.tre
 ```
+
+
+MPEST rooted gene tree preparation
+```
+../../../RangerDTL/CorePrograms/OptRoot.linux -i input.tre -o test.tre
+```
