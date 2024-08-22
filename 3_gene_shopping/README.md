@@ -1,0 +1,1 @@
+iqtree2 -s G2141.conc.fasta -p G2141.na.partition.nex --symtest-only
