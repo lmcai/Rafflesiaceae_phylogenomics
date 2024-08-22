@@ -13,5 +13,12 @@ java -jar ../../Astral/astral.5.7.8.jar -q G2141.aster4.tre -i G2141.aster.genet
 
 MPEST rooted gene tree preparation
 ```
-../../../RangerDTL/CorePrograms/OptRoot.linux -i input.tre -o test.tre
+../../../RangerDTL/CorePrograms/OptRoot.linux -i 0.input.tre -o 0.rangerdDTL.out
+../../../RangerDTL/CorePrograms/OptRoot.linux -i 1.input.tre -o 1.rangerdDTL.out
+../../../RangerDTL/CorePrograms/OptRoot.linux -i 2.input.tre -o 2.rangerdDTL.out
+../../../RangerDTL/CorePrograms/OptRoot.linux -i 3.input.tre -o 3.rangerdDTL.out
+```
+Then extract rooted gene trees to file:
+```
+awk 'FNR == 4' *.rangerdDTL.out > G2141.mpest.gene.trees
 ```
