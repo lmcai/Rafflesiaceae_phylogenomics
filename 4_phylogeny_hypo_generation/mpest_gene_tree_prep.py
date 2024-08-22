@@ -1,32 +1,12 @@
 from ete3 import Tree
 import ete3
-x=open('G2141.aster.genetree.trees').readlines()
+x=open('G2141.nucleotide_model.gene.trees').readlines()
 
-out=open('G2141.mpest.gene.trees','a')
-trees=[]
-for l in x:
-	t=Tree(l.strip())
+sptr='(((((((((((((Mammea:1.0,Calophyllum:1.0):3.0561869999999995,(Hypericum:1.0,Podostemum:1.0):0.39680800000000005):0.6578140000000001,(Garcinia:1.0,Clusia:1.0):4.691044):4.449122999999998,Ochna:1.0):0.16590200000000266,Linum:1.0):0.0449889999999975,Chrysobalanus:1.0):0.21712199999999982,(Bischofia:1.0,Sauropus:2.0):1.5960600000000014):0.019146999999996694,Ixonanthes:1.0):0.05265200000000192,((Bergia:1.0,Elatine:1.0):4.405548,(Tristellateia:1.0,Galphimia:1.0):3.501460999999999):1.4642130000000009):0.042588999999999544,((((((SalixSu:1.0,Salix:1.0):5.040746999999998,Populus:1.0000000000000018):3.8195189999999997,Flacourtia:1.0):3.8625740000000004,Casearia:1.0):4.496147000000001,((Malesherbia:1.0,Passiflora:1.0):5.798220000000001,(Rinorea:1.0,Viola:1.0):2.565958000000002):0.19246300000000005):0.9198129999999978,Bhesa:1.0):0.036031000000001256):0.027321000000000595,((((((((Manihot:1.0,Hevea:1.0):5.164953000000001,(Endospermum:1.0,Jatropha:1.0):0.2574959999999997):0.694229,Ricinus:1.0):2.203963999999999,Clutia:0.9999999999999982):2.8301830000000017,Drypetes:1.0):0.05975600000000014,(((Rca:1.0,Rtu:1.0):3.103719999999999,Rhi:1.0):1.4163910000000008,Sap:1.0):6.6075230000000005):0.07514799999999866,(Erythroxylum:1.0,Rhizophora:1.0):2.650034999999999):0.03909499999999966,Galearia:1.0):0.07326400000000177):3.1364340000000013,Crossopetalum:0.9999999999999982):1.490432,(Elaeocarpus:1.0,Oxalis:1.0):1.4904319999999986);\n'
+for i in range(0,len(x)):
+	t=Tree(x[i].strip())
 	sp=[node.name for node in t]
-	try:
-		raff=set(sp) & {'Sap','Rhi','Rca','Rtu'}
-		if len(raff)>1:
-			temroot=t.get_common_ancestor(raff)
-			t.set_outgroup(temroot)
-		else:
-			t.set_outgroup(list(raff)[0])
-		if 'Oxalis' in sp and 'Elaeocarpus' in sp:
-			root=t.get_common_ancestor('Oxalis','Elaeocarpus')
-			t.set_outgroup(root)
-		elif 'Oxalis' in sp:
-			t.set_outgroup(t&"Oxalis")
-		elif 'Elaeocarpus' in sp:
-			t.set_outgroup(t&"Elaeocarpus")
-		elif 'Crossopetalum' in sp:
-			t.set_outgroup(t&"Crossopetalum")
-		trees.append(t.write(format=9))
-	except:
-		print(t.write())
-
-
-out.write('\n'.join(trees))
-out.close()
+	t.set_outgroup(t&sp[0])
+	out=open(str(i)+'.input.tre','w')
+	out.write(sptr+t.write(format=9))
+	out.close()
