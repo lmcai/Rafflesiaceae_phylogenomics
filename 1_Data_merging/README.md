@@ -8,4 +8,13 @@ We combined the phylogenomic data from Cai et al. 2019 (Widespread ancient whole
 
 3. To extract amino acid sequences and output to fasta file, use `aa_aln_prep.py`. To extract DNA sequences and output to fasta file, use `na_aln_prep.py`.
 
-4. To add Apodanthaceae species (Apodanthes and Pilostyles) 
+4. To add orthologous Apodanthaceae sequences (Apodanthes and Pilostyles) to this dataset, we used HMMER to identify potential orthologs.
+
+   An HMM profile as generated for each alignment using
+   ```
+   hmmbuild 1.hmm 1.aln.fas
+   ```
+   To search ortholog in Apodanthaceae, use the following commanad:
+   ```
+   hmmsearch --domtblout 1.tabfile -o 1.hmmsearch 1.hmm Apodanthes_CDS.fa
+   ```
