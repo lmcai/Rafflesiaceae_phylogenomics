@@ -2,13 +2,9 @@ from ete3 import Tree
 import os
 from scipy import stats
 
-t=Tree('')
-
 #remove long internal branches (potential paralogs)
 #reroot the tree
 #identify orthologs
-
-
 treefiles=os.listdir('.')
 treefiles=[i for i in treefiles if i.endswith('.treefile')]
 
@@ -32,10 +28,7 @@ raff_headers = (">Sap", ">Rhi", ">Rca",">Rtu")
 malp_headers=('Ptr','Mes','Jat','Sap','Rhi','Rtu','Rca','Apoda','Pilo')
 for i in treefiles:
 	tree=Tree(i)
-	num_taxa_before=len(tree)
-	#two rounds of long branch pruning; first remove branches longer than 15 times then average; second round 10 times
-	tree = prune_long_br(tree,15)
-	#tree = prune_long_br(tree,10)
+	#num_taxa_before=len(tree)
 	#reroot the tree
 	sp=[node.name for node in tree]
 	root_candidate=[i for i in sp if i.startswith('Amb')]
@@ -46,18 +39,21 @@ for i in treefiles:
 	root_candidate=root_candidate+[i for i in sp if i.startswith('Nel')]
 	try:
 		tree.set_outgroup(root_candidate[0])
+		#two rounds of long branch pruning; first remove branches longer than 15 times then average; second round 10 times
+		#tree = prune_long_br(tree,10)
+		tree = prune_long_br(tree,15)
 		tree.write(outfile=i.split('.')[0]+'.nolongbr_rooted.tre')
 		#label Malpighiales
 		for node in tree:
 			if node.name.startswith(malp_headers):node.add_features(label="Malp")
 		#get the ortholog Apodanthaceae for each Rafflesiaceae clade
-		raff=open('../na_aln/'+i.split('.')[0]+'.fasta')
+		raff=open('../add_apo_rna_geneTr_rnd1/'+i.split('.')[0]+'.combined.fas').readlines()
 		raff=[i[1:].strip() for i in raff if i.startswith(raff_headers)]
-		for node in tree.get_monophyletic(values=["Malp"], target_attr="Malp"):
-			malp_sp=[node.name in node]
+		for node in tree.get_monophyletic(values=["Malp"], target_attr="label"):
+			malp_sp=[leaf.name for leaf in node]
 			if len(set(malp_sp) & set(raff))>0:
 				apo_output=[j for j in malp_sp if (j.startswith('Apodan') or j.startswith('Pilo'))]
-		if len(apo_output):print(i+': '+apo_output)
+		if len(apo_output):print(i+': '+', '.join(apo_output))
 		else:print(i+': No orthologous Apodanthaceae')
 	except:
 		print(i+': Failed rooting')
