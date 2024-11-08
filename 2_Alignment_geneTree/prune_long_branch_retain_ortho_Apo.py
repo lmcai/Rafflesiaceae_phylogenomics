@@ -25,7 +25,7 @@ def prune_long_br(tr,length_limit):
 	return(tr)
 
 raff_headers = (">Sap", ">Rhi", ">Rca",">Rtu") 
-malp_headers=('Ptr','Mes','Jat','Sap','Rhi','Rtu','Rca','Apoda','Pilo')
+malp_headers=('Ptr','Mes','Jat','Sap','Rhi','Rtu','Rca','Apoda','Pilo','pSHI')
 for i in treefiles:
 	tree=Tree(i)
 	#num_taxa_before=len(tree)
