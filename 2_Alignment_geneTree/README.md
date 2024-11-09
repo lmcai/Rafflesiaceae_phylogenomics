@@ -13,7 +13,7 @@ The bash script to run these analyses altogether for each gene is provided in `m
 ```
 python yangya-phylogenomic_dataset_construction-489685700c2a/prune_paralogs_RT.py test/ .treefile na_tree_yang_pruned/ 10 malp.taxa
 ```
-This resulted in 2141 orthogroups for final phylogenetic investigation.
+This resulted in 2141 orthogroups for final phylogenetic investigation. Newly added orthologous Apodanthaceae for each orthogroup is included in `orthologous_apodanthaceae.tsv`.
 
 3. Second round alignment
 
