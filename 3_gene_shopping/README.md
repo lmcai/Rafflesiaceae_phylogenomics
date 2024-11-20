@@ -12,6 +12,6 @@ java -jar ~/programs/Notung-2.8.1.3-beta.jar -s sp.tre -b gene.list --root --tre
 ```
 **Caveat:** The terminal branch length will be removed. This is only good for getting the correct branch support
 
-b. Use the python script `geneTr_reroot_branchlen.py` to extract branch length related metrics
+b. Use the python script `geneTr_reroot_branchlen.py` to extract branch length related metrics in `G2141.node_support_branlen.tsv`
 
 3. To obtain root-to-tip branch-length variance, and gene tree–species tree congruence for free-living species using [SortaDate](https://github.com/FePhyFoFum/SortaDate), the following steps were used:
