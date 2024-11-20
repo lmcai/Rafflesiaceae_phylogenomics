@@ -1,7 +1,7 @@
 from ete3 import Tree
 from Bio import SeqIO
 import os
-from numpy import median
+from numpy import median, min
 
 gene_tree_dir='/n/holyscratch01/davis_lab/lmcai/sapria_phylogeny/8_GGI/G2141_1to1_trees/'
 genes=os.listdir(gene_tree_dir)

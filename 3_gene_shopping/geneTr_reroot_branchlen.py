@@ -1,88 +1,22 @@
-#/usr/bin/python
-from ete3 import Tree
-import os
-import ete3
-x=os.listdir('.')
-x=[i for i in x if i.endswith('treefile')]
-for j in x:
-	t=Tree(j,format=1)
-	outgroup=[]
-	out_sp=[]
-	out_sp=[i.name for i in t if i.name.startswith(('Elaeocarpus','Oxalis'))]
-	if len(out_sp)>1:
-		outgroup = t.get_common_ancestor(out_sp)
-	elif len(out_sp)==1:
-		outgroup = t&out_sp[0]
-	else:
-		out_sp=[i.name for i in t if i.name.startswith('Crossopetalum')]
-		if len(out_sp)>0:
-			outgroup = t&out_sp[0]
-	if outgroup:
-		try:
-			t.set_outgroup(outgroup)
-		except ete3.coretype.tree.TreeError:
-			t.set_outgroup(out_sp[0])
-		t.write(format=1, outfile=j.split('.')[0]+'.rooted.tre')
-	else:
-		#choose a non-raff to be outgroup
-		out_sp=[i.name for i in t if i.name.startswith(('Rinorea','Viola','Malesherbia','Passiflora','Casearia','Flacourtia','Populus','SalixSu','Salix'))]
-		out_sp=out_sp+[i.name for i in t if i.name.startswith(('Tristellateia','Galphimia','Elatine','Bergia','Sauropus','Bischofia'))]
-		out_sp=out_sp+[i.name for i in t if i.name.startswith(('Calophyllum','Mammea','Hypericum','Podostemum','Clusia','Garcinia','Ochna','Linum','Chrysobalanus'))]
-		if len(out_sp)>0:
-			t.set_outgroup(out_sp[0])
-			t.write(format=1, outfile=j.split('.')[0]+'.rooted.tre')
-		else:
-			print j
-
-x=open('../G2141.branch_len.tsv').readlines()
-x=[i.split()[0] for i in x[1:]]
-out=open('G2141.branch_len.tsv','a')
-out.write('ID\tstem_raff_branch_len\tancestor_of_stem_raff_bran_len\tBP\tdist2root\n')
-for j in x:
-	try:
-		t=Tree(j+'.rooted.tre',format=1)
-		raff=[i.name for i in t if i.name.startswith(('Sap','Rca','Rtu','Rhi')) and not i.name.startswith('Rhizo')]
-		#if raff are monophyletic
-		if t.check_monophyly(values=raff, target_attr="name")[0]:
-			if len(raff)>1:
-				raff_node=t.get_common_ancestor(raff)
-				out.write(j+'\t'+str(raff_node.dist)+'\t'+str(raff_node.get_ancestors()[0].dist)+'\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
-			elif len(raff)==1:
-				raff_node=t&raff[0]
-				out.write(j+'\tNA\tNA\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
-		#choose the node with most species
-		else:
-			for leaf in t:
-				if leaf.name in raff:leaf.add_features(raff='Y')
-			curr_sp_num=0
-			for node in t.get_monophyletic(values='Y', target_attr="raff"):
-				if len(node.get_leaf_names())>curr_sp_num:
-					curr_sp_num=len(node.get_leaf_names())
-					raff_node=node
-			if curr_sp_num>1:
-				out.write(j+'\t'+str(raff_node.dist)+'\t'+str(raff_node.get_ancestors()[0].dist)+'\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
-			elif curr_sp_num==1:
-				out.write(j+'\tNA\tNA\t'+raff_node.get_ancestors()[0].name+'\t'+str(len(raff_node.get_ancestors()))+'\n')
-	except IOError:
-		print j
-	except IndexError:
-		print j
-	except ete3.parser.newick.NewickError:
-		print j
+###################
+#Get nodal support
 
 ################
 ##IMPORTANT!!! ete3 generate incorrect node labels when rerooting, see this paper https://academic.oup.com/mbe/article/34/6/1535/3077051
 #To deal with this problem, I reroot the trees in Notung, using the following command. Then I get the BP support values using ete3
 java -jar ~/programs/Notung-2.8.1.3-beta.jar -s sp.tre -b gene.list --root --treeoutput newick --speciestag prefix --silent --progressbar --outputdir rooted_geneTr --nolosses
 
+#These rerooted gene trees are good for getting the node labels, but internal branch length are all modified by Notung
 #/usr/bin/python
 from ete3 import Tree
 import os
-x=os.listdir('.')
+files=os.listdir('.')
+files=[i for i in files if i.endswith('rooting.0.nwk')]
 
-out=open('G2141.BP.tsv','a')
-out.write('ID\tBP\n')
-for j in x:
+out=open('G2141.node_support.tsv','w')
+out.write('ID\tRaff_UFBP\tApo_UFBP\n')
+
+for j in files:
 	t=Tree(j,format=1)
 	BP='NA'
 	raff=[i.name for i in t if i.name.startswith(('Sap','Rca','Rtu','Rhi')) and not i.name.startswith('Rhizo')]
@@ -104,106 +38,100 @@ for j in x:
 		raff_node=t&raff[0]
 		BP=raff_node.get_ancestors()[0].name
 	else:
-		print j
-	out.write(j.split('.')[0]+'\t'+BP+'\n')
+		print(j+':No raff')
+	apo_BP='NA'
+	apo=[i.name for i in t if i.name.startswith(('Apodan','Pilo'))]
+	if len(apo)>1:
+		if t.check_monophyly(values=apo, target_attr="name")[0]:
+			apo_node=t.get_common_ancestor(apo)
+			apo_BP=apo_node.get_ancestors()[0].name
+		else:
+			apo_node=t&apo[0]
+			apo_BP=apo_node.get_ancestors()[0].name
+	elif len(apo)==1:
+		apo_node=t&apo[0]
+		apo_BP=apo_node.get_ancestors()[0].name
+	d=out.write(j.split('.')[0]+'\t'+BP+'\t'+apo_BP+'\n')
+
+####################################
+#To get branch length distributions
+#/usr/bin/python
+from ete3 import Tree
+import os
+import ete3
+from numpy import median, min
+
+x=open('G2141.node_support.tsv').readlines()
+out=open('G2141.node_support_branlen.tsv','w')
+out.write('ID\tRaff_UFBP\tApo_UFBP\tmedian_root2tip\tmin_raff_root2tip\traff_brlen\traff_dist2root\tmin_apo_root2tip\tapo_brlen\traff_apo_nomophyly\n')
+
+for j in x[1:]:
+	jj=j
+	j=j.split()[0]
+	#print(j)
+	t=Tree(j+'.na.mask.fas.treefile',format=1)
+	rooted_notung=Tree('rooted_geneTr/'+j+'.na.mask.fas.treefile.rooting.0.nwk',format=1)
+	root_candidate1=[node.name for node in rooted_notung.children[1]]
+	root_candidate2=[node.name for node in rooted_notung.children[0]]
+	if len(root_candidate1)<len(root_candidate2):
+		outgroup=root_candidate1
+		backup=root_candidate2
+	else:
+		outgroup=root_candidate2
+		backup=root_candidate1
+	if len(outgroup)>1:outgroup_node=t.get_common_ancestor(outgroup)
+	else:outgroup_node=t&outgroup[0]
+	try:t.set_outgroup(outgroup_node)
+	except ete3.coretype.tree.TreeError:
+		t.set_outgroup(backup[0])
+		if len(outgroup)>1:outgroup_node=t.get_common_ancestor(outgroup)
+		else:outgroup_node=t&outgroup[0]
+		t.set_outgroup(outgroup_node)
+	t.write(format=1, outfile=j+'.rooted.tre')
+	median_root2tip=median([outgroup_node.get_distance(node.name) for node in t if not node.name.startswith(('Sap','Rca','Rtu','Rhi_','Apod','Pilo'))])
+	min_raff_root2tip='NA'
+	raff_nodedist2root='NA'
+	raff_brlen='NA'
+	min_apo_root2tip='NA'
+	apo_brlen='NA'
+	raff=[i.name for i in t if i.name.startswith(('Sap','Rca','Rtu','Rhi')) and not i.name.startswith('Rhizo')]
+	apo=[i.name for i in t if i.name.startswith(('Apod','Pilo'))]
+	#rafflesiaceae related features
+	if len(raff)>0:
+		min_raff_root2tip=min([outgroup_node.get_distance(node) for node in raff])
+		#if raff are monophyletic
+		if t.check_monophyly(values=raff, target_attr="name")[0]:
+			if len(raff)>1:
+				raff_node=t.get_common_ancestor(raff)
+			elif len(raff)==1:
+				raff_node=t&raff[0]
+		#if not monophyletic, choose the node with most species
+		else:
+			for leaf in t:
+				if leaf.name in raff:leaf.add_features(raff='Y')
+			curr_sp_num=0
+			for node in t.get_monophyletic(values='Y', target_attr="raff"):
+				if len(node.get_leaf_names())>curr_sp_num:
+					curr_sp_num=len(node.get_leaf_names())
+					raff_node=node
+		raff_nodedist2root=outgroup_node.get_distance(raff_node, topology_only=True)
+		raff_brlen=raff_node.get_ancestors()[0].dist
+	#apodanthaceae related
+	if len(apo)>0:
+		min_apo_root2tip=min([outgroup_node.get_distance(node) for node in apo])
+		if t.check_monophyly(values=apo, target_attr="name")[0]:
+			if len(apo)>1:
+				apo_node=t.get_common_ancestor(apo)
+			elif len(apo)==1:
+				apo_node=t&apo[0]
+		else:apo_node=t&apo[0]
+		apo_brlen=apo_node.get_ancestors()[0].dist
+	mono='NA'
+	if len(raff)>0 and len(apo)>0:
+		if t.check_monophyly(values=raff+apo, target_attr="name")[0]:mono='Y'
+		else:mono='N'
+	print(mono)
+	d=out.write(jj.strip()+'\t'+str(median_root2tip)+'\t'+str(min_raff_root2tip)+'\t'+str(raff_brlen)+'\t'+str(raff_nodedist2root)+'\t'+str(min_apo_root2tip)+'\t'+str(apo_brlen)+'\t'+mono+'\n')			
 
 
-
-###############
-
-#The following gene trees do not have outgroups from the 100 bootstrap run in IQTREE
-3024.aln.treefile
-2874.aln.treefile
-2871.aln.treefile
-764.aln.treefile
-2708.aln.treefile
-2321.aln.treefile
-2732.aln.treefile
-284.aln.treefile
-2448.aln.treefile
-1288.aln.treefile
-270.aln.treefile
-965.aln.treefile
-2712.aln.treefile
-1715.aln.treefile
-3055.aln.treefile
-2547.aln.treefile
-1871.aln.treefile
-2049.aln.treefile
-1519.aln.treefile
-139.aln.treefile
-937.aln.treefile
-2068.aln.treefile
-2818.aln.treefile
-1737.aln.treefile
-2946.aln.treefile
-1327.aln.treefile
-2159.aln.treefile
-2445.aln.treefile
-1274.aln.treefile
-2765.aln.treefile
-390.aln.treefile
-810.aln.treefile
-2735.aln.treefile
-1585.aln.treefile
-2937.aln.treefile
-952.aln.treefile
-1807.aln.treefile
-594.aln.treefile
-2647.aln.treefile
-2305.aln.treefile
-3072.aln.treefile
-2654.aln.treefile
-2836.aln.treefile
-2901.aln.treefile
-2867.aln.treefile
-1785.aln.treefile
-2840.aln.treefile
-2509.aln.treefile
-2412.aln.treefile
-2552.aln.treefile
-2366.aln.treefile
-547.aln.treefile
-2968.aln.treefile
-911.aln.treefile
-2800.aln.treefile
-1562.aln.treefile
-1141.aln.treefile
-2895.aln.treefile
-2845.aln.treefile
-366.aln.treefile
-1891.aln.treefile
-1173.aln.treefile
-2688.aln.treefile
-3000.aln.treefile
-2062.aln.treefile
-2576.aln.treefile
-1860.aln.treefile
-2969.aln.treefile
-3006.aln.treefile
-2717.aln.treefile
-1864.aln.treefile
-2887.aln.treefile
-1340.aln.treefile
-1550.aln.treefile
-1467.aln.treefile
-2521.aln.treefile
-2808.aln.treefile
-2545.aln.treefile
-1769.aln.treefile
-2706.aln.treefile
-280.aln.treefile
-2217.aln.treefile
-2294.aln.treefile
-2926.aln.treefile
-2832.aln.treefile
-2425.aln.treefile
-3009.aln.treefile
-1998.aln.treefile
-57.aln.treefile
-2376.aln.treefile
-1187.aln.treefile
-3022.aln.treefile
-802.aln.treefile
-2512.aln.treefile
-806.aln.treefile
+out.close()
