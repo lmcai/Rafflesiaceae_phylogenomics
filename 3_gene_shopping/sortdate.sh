@@ -2,7 +2,7 @@
 
 ######################
 #Get the root-to-tip variance
-python ~/programs/SortaDate/src/get_var_length.py gene_trees_sortdata/ --flend .inclade1.ortho1.tre --outg Crossopetalum,Oxalis,Elaeocarpus --outf gene_tree_root2tip_var.tsv
+python ~/programs/SortaDate/src/get_var_length.py rooted_gene_trees/ --flend .tre --outg Crossopetalum,Oxalis,Elaeocarpus --outf gene_tree_root2tip_var.tsv
 
 #There wu=ill be error message: 
 #Error: no matching tip labels. Returning original tree.
@@ -15,7 +15,7 @@ python ~/programs/SortaDate/src/get_var_length.py gene_trees_sortdata/ --flend .
 ######################
 #Get the bipartition support
 
-python ~/programs/SortaDate/src/get_bp_genetrees.py gene_trees_sortdata/ G2999.astral.rooted.tre --flend .inclade1.ortho1.tre --outf gene_tree_bp.tsv
+python ~/programs/SortaDate/src/get_bp_genetrees.py rooted_gene_trees/ ../23_add_apo_na_aln_geneTr/sp.tre --flend .tre --outf gene_tree_bp.tsv
 
 ######################
 #Combine the results from these two runs
@@ -28,5 +28,5 @@ python ~/programs/SortaDate/src/combine_results.py gene_tree_root2tip_var.tsv ge
 #remove rows without four columns
 awk 'NF==4{print}{}' gene_tree_combined_statistics.tsv >gene_tree_combined_statistics_filtered.tsv
 
-python ~/programs/SortaDate/src/get_good_genes.py gene_tree_combined_statistics_filtered.tsv --max 500 --order 1,2,3 --outf best_gene.list
+python ~/programs/SortaDate/src/get_good_genes.py gene_tree_combined_statistics.tsv --max 500 --order 1,2,3 --outf best_gene.list
 
