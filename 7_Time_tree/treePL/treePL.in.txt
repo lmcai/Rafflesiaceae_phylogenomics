@@ -1,4 +1,4 @@
-treefile = test.tre2.tre
+treefile = analysis15_topo.analysis5_aln.tre
 numsites = 2066644
 outfile = malpig_treePL.tre
 smooth = 0.01
