@@ -1,0 +1,37 @@
+treefile = test.tre2.tre
+numsites = 2066644
+outfile = malpig_treePL.tre
+smooth = 0.01
+thorough
+#prime
+
+mrca = root Oxalis Casearia
+mrca = crown_Euphorb Endospermum Ricinus
+mrca = stem_Casearia Casearia Flacourtia
+mrca = stem_Clusiaceae Clusia Calophyllum
+mrca = crown_Oxalidales Elaeocarpus Oxalis
+mrca = crown_Phyllanthaceae Bischofia Sauropus
+mrca = stem_salix Salix Populus
+mrca = crown_Malp Galphimia Tristellateia
+
+
+min = root 118
+max = root 118
+min = crown_Euphorb 61
+min = stem_Casearia 37
+min = stem_Clusiaceae 89
+min = crown_Oxalidales 83.5
+min = crown_Phyllanthaceae 33.7
+min = stem_salix 48
+min = crown_Malp 49
+#cv
+#randomcv
+#cvstart = 1000
+#cvstop = 0.001
+#cvoutfile = malpig_treePL.cv.txt
+opt = 2
+moredetail
+optad = 2
+moredetailad
+optcvad = 2
+moredetailcvad
