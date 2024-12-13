@@ -16,3 +16,7 @@ The final ultrametric tree is `malpig_treePL.tre`.
 
 
 ## Phylobayes analysis
+
+Phylobayes has the advantage of both Bayesian analysis and complex mixture models to better model substitutional processes. It is also computationally intense, and we thus subsampled the input data to select the most clock-like genes
+
+1. Rank the genes based on clock-likeness using Sortadata.
