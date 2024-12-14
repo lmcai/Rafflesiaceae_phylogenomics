@@ -33,7 +33,7 @@ python ~/programs/SortaDate/src/get_var_length.py rooted_gene_trees/ --flend .tr
 #/bin/sh: line 1: 344793 Segmentation fault      (core dumped) pxrmt -t gene_trees_sortdata//2151.inclade1.ortho1.tre -n Crossopetalum,Oxalis,Elaeocarpus
 #     344794                       (core dumped) | pxlstr
 
-#This may due to missing data in the gene trees
+#This may be due to missing data in the gene trees
 
 ######################
 #Get the bipartition support
@@ -54,4 +54,20 @@ awk 'NF==4{print}{}' gene_tree_combined_statistics.tsv >gene_tree_combined_stati
 python ~/programs/SortaDate/src/get_good_genes.py gene_tree_combined_statistics.tsv --max 500 --order 1,2,3 --outf best_gene.list
 ```
 
-2. Based on the result of SortaDate, select 
+2. Based on the result of SortaDate, select ## genes meeting the following criteria (1) All genes with >## species, containing both Rafflesiaceae and Apodanthaceae, and ranked in the top 70% based on clock-likeness; (2) All genes with >## species and ranked in the top 50% based on clock-likeness. 
+
+This resulted in ## genes listed in `G.list`.
+
+3. Divergence time estimation in PhyloBayes v4.1.
+
+With a fixed topology (same as the treePL topology above, required by PhyloBayes), we used the ##-gene DNA alignment, uniformly distributed fossil calibration points, and CAT-GTR mixture model to infer divergence time in PhyloBayes. The following command was used:
+
+```
+~/programs/phylobayes/bin/pb -d G200.sortadate.sp31.no3rd.hmm10.gt03.fas.phy -T analysis15_topo.analysis5_aln.treefile -
+r malp.outgroup -cal malp.clib -ln -gtr -cat -f malp.pb1
+```
+
+To summarize the result with confidence intervals, use the following command:
+```
+~/programs/phylobayes/bin/readdiv -x <burn-in> [<every> <until>] malp.pb1
+```
