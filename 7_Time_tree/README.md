@@ -52,6 +52,6 @@ python ~/programs/SortaDate/src/combine_results.py gene_tree_root2tip_var.tsv ge
 awk 'NF==4{print}{}' gene_tree_combined_statistics.tsv >gene_tree_combined_statistics_filtered.tsv
 
 python ~/programs/SortaDate/src/get_good_genes.py gene_tree_combined_statistics.tsv --max 500 --order 1,2,3 --outf best_gene.list
-
-
 ```
+
+2. Based on the result of SortaDate, select 
