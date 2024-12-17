@@ -68,5 +68,5 @@ r malp.outgroup -cal malp.clib -ln -gtr -cat -f malp.pb1
 
 To summarize the result with confidence intervals, use the following command:
 ```
-~/programs/phylobayes/bin/readdiv -x <burn-in> [<every> <until>] malp.pb1
+~/programs/phylobayes/bin/readdiv -x <burn-in> <every> <until> malp.pb1
 ```
