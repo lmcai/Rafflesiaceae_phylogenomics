@@ -18,3 +18,4 @@ We combined the phylogenomic data from Cai et al. 2019 (Widespread ancient whole
    ```
    hmmsearch --domtblout 1.tabfile -o 1.hmmsearch 1.hmm Apodanthes_CDS.fa
    ```
+5. The resulting DNA and protein alignments were then further cleaned using phylogeny-based approaches, see `2_Alignment_geneTree`.
