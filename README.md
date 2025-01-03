@@ -21,7 +21,7 @@ Command line and custom scripts to extract phylogenetic properties of individual
 
 Command lines to infer species tree under the concatenation and coalescent models.
 
-## 5_hypothesis_testing
+## 5_Topology_test
 
 Testing alternative placements of Rafflesiacaee under the concatenation and coalescent models.
 
