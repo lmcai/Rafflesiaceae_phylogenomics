@@ -31,9 +31,9 @@ Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70
 iqtree2 -s G2135.cds.fas -m GTR+FO*H4 -wspm -T AUTO --prefix G2135.cds_codon.GHOST -B 1000
 ```
 ### Analysis 6
-Dataset = **G434 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based partition, ModelFinder best fitting
+Dataset = **G446 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based partition, ModelFinder best fitting
 ```
-iqtree2 -s G434.cds.fas -p G434.cds.partition -m MFP+MERGE -T AUTO -B 1000
+iqtree2 -s G446.cds.fas -p G446.cds.partition -m MFP+MERGE -T AUTO -B 1000
 ```
 
 ## 2. Protein concatenation analyses
@@ -53,9 +53,9 @@ Dataset = **G829 (clock-like+>32sp)**; Site masking= HmmCleaner threshold 50 + T
 iqtree2 -s G829.aa.fas -m LG+C30+F+G -ft G2135.aa.mask_trim.partition.treefile -b 100 -T AUTO --prefix G829.aa.PMSF
 ```
 ### Analysis 10
-Dataset = **G434 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based partition, ModelFinder best fitting
+Dataset = **G446 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based partition, ModelFinder best fitting
 ```
-iqtree2 -s G434.aa.fas -p G434.aa.partition -m MFP+MERGE -T AUTO -B 1000
+iqtree2 -s G446.aa.fas -p G446.aa.partition -m MFP+MERGE -T AUTO -B 1000
 ```
 
 # II. Coalescent analyses
@@ -105,9 +105,9 @@ Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70
 ASTER-Linux/bin/astral4 -i G2135.MFP.trees -o G2135.MFP.aster4.tre
 ```
 ### Analysis 16
-Dataset = **G434 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **ModelFinder best fitting**
+Dataset = **G446 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **ModelFinder best fitting**
 ```
-ASTER-Linux/bin/astral4 -i G434.mono.trees -o G434.mono.aster4.tre
+ASTER-Linux/bin/astral4 -i G446.mono.trees -o G446.mono.aster4.tre
 ```
 
 ## 2. MP-ESP
