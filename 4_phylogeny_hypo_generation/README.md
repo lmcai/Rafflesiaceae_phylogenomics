@@ -78,15 +78,37 @@ java -jar ../../Astral/astral.5.7.8.jar -q G2141.aster4.tre -i G2141.aster.genet
 The resulting species trees were similar to each other. We decided to use the ASTRAL4 algorithm without any branch collapsing.
 
 The commands we used for final analyses were as follows:
+
+### Analysis 11
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = codon-based; Substitution Model = **GTR (no +I or +F or +R)**
 ```
 ASTER-Linux/bin/astral4 -i G2135.GTR_codon.trees -o G2135.GTR_codon.aster4.tre
+```
+### Analysis 12
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = codon-based; Substitution Model = **ModelFinder best fitting**
+```
 ASTER-Linux/bin/astral4 -i G2135.MFP_codon.trees -o G2135.MFP_codon.aster4.tre
-ASTER-Linux/bin/astral4 -i G2135.msetGTR_codon.trees -o G2135.msetGTR_codon.aster4.tre
+```
+### Analysis 13
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **GTR+I+F+R/G**
+```
 ASTER-Linux/bin/astral4 -i G2135.msetGTR.trees -o G2135.msetGTR.aster4.tre
+```
+### Analysis 14
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = codon-based; Substitution Model = **GTR+I+F+R/G**
+```
+ASTER-Linux/bin/astral4 -i G2135.msetGTR_codon.trees -o G2135.msetGTR_codon.aster4.tre
+```
+### Analysis 15
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **ModelFinder best fitting**
+```
 ASTER-Linux/bin/astral4 -i G2135.MFP.trees -o G2135.MFP.aster4.tre
+```
+### Analysis 16
+Dataset = **G434 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **ModelFinder best fitting**
+```
 ASTER-Linux/bin/astral4 -i G434.mono.trees -o G434.mono.aster4.tre
 ```
-This will output a species tree and branch support was evaluated with local posterial probability.
 
 ## 2. MP-ESP
 
