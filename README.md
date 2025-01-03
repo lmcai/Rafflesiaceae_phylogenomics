@@ -25,11 +25,11 @@ Command lines to infer species tree under the concatenation and coalescent model
 
 Testing alternative placements of Rafflesiacaee under the concatenation and coalescent models.
 
-## 7_Time_tree 
+## 6_Time_tree 
 
 Inferring the placement of Rafflesiaceae under the full coalescent model in starBEAST with a reduced dataset.
 
-## 8_MSC_simulation
+## 7_MSC_simulation
 
 Simulating sequence under the multi-species coalescent model using empirical parameters to test whether we can confidently resolve the placement of Rafflesiaceae with the amout of data available.
 
