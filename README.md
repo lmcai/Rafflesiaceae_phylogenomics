@@ -5,20 +5,32 @@ Citation: Liming Cai, Liang Liu, Charles C Davis. The danger zone: the joint tra
 
 Subfolders:
 
-**1_Data_merging**: Script used to merge two phylogenomics datasets from Cai et al. (2019) and Cai et al. (2021) in order to investigate the placement of Rafflesiaceae.
+## 1_Data_merging
 
-**2_Alignment_geneTree**: MAFFT and IQTREE command line to generate sequence alingment and individual gene trees.
+Commands and scripts used to merge phylogenomics datasets from Cai et al. (2019), Cai et al. (2021), and newly generated RNA seq data from Apodanthaceae in order to investigate the placement of Rafflesiaceae+Apodanthaceae.
 
-**3_gene_shopping**: SORTADATE command line to extract phylogenetic properties of individual genes.
+## 2_Alignment_geneTree
 
-**4_phylogeny_hypo_generation**: Command lines to infer species tree under the concatenation and coalescent models.
+Sequence data cleaning, alignment, and gene tree inference. Software used: MAFFT, TrimAL, HmmCleaner, IQTREE, and custom scripts.
 
-**5_GGI_test**: Application of gene genealogy interrogation (GGI) method from Arcila et al. (2017) to test alternative placement of Rafflesiaceae.
+## 3_gene_shopping
 
-**6_hypothesis_testing**: Testing alternative placements of Rafflesiacaee under the concatenation and coalescent models.
+Command line and custom scripts to extract phylogenetic properties of individual genes. Software used: IQTREE, SortaDate, and custom scripts.
 
-**7_starbeast**: Inferring the placement of Rafflesiaceae under the full coalescent model in starBEAST with a reduced dataset.
+## 4_phylogeny_hypo_generation
 
-**8_MSC_simulation**: Simulating sequence under the multi-species coalescent model using empirical parameters to test whether it is feasible to place Rafflesiaceae.
+Command lines to infer species tree under the concatenation and coalescent models.
 
-For specific steps, go to the README in each subfolders.
+## 5_hypothesis_testing
+
+Testing alternative placements of Rafflesiacaee under the concatenation and coalescent models.
+
+## 7_Time_tree 
+
+Inferring the placement of Rafflesiaceae under the full coalescent model in starBEAST with a reduced dataset.
+
+## 8_MSC_simulation
+
+Simulating sequence under the multi-species coalescent model using empirical parameters to test whether we can confidently resolve the placement of Rafflesiaceae with the amout of data available.
+
+For details, see the README file in each subfolders.
