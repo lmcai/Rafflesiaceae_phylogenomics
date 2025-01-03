@@ -1,6 +1,6 @@
 # Sequence alignment, gene tree inference, data cleaning
 
-Sequence alignment, gene tree inference, and data cleaning were conducted with the following steps:
+Sequence data cleaning, alignment, and gene tree inference were conducted with the following steps:
 
 1. First-round alignment + tree inference
   
