@@ -112,10 +112,35 @@ ASTER-Linux/bin/astral4 -i G446.mono.trees -o G446.mono.aster4.tre
 
 ## 2. MP-ESP
 
-MP-EST v3.0 was conducted similarly, using five sets of gene trees. A sample MP-EST command is as follows: 
-```
-mpest -i G2135.GTR_codon.rooted.trees -n 1 -s 432567
-```
-The branch support was evaluated using the non-paramatric bootstrap gene trees. Where 1 BP gene tree was sampled for 2135 genes, in 100 replications. Then 100 BP species tree was inferred and summarized onto the best species tree to generate BP support. 
+MP-EST v3.0 was conducted similarly, using five sets of gene trees. The branch support was evaluated using the non-paramatric bootstrap gene trees. Where 1 BP gene tree was sampled for 2135 genes, in 100 replications. Then 100 BP species tree was inferred and summarized onto the best species tree to generate BP support. 
 
-
+### Analysis 17
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = codon-based; Substitution Model = **GTR (no +I or +F or +R)**
+```
+mpest -i G2135.GTR_codon.trees -n 1 -s 432567
+```
+### Analysis 18
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = codon-based; Substitution Model = **ModelFinder best fitting**
+```
+mpest -i G2135.MFP_codon.rooted.trees -n 1 -s 432567
+```
+### Analysis 19
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **GTR+I+F+R/G**
+```
+mpest -i G2135.msetGTR.rooted.trees -n 1 -s 432567
+```
+### Analysis 20
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = codon-based; Substitution Model = **GTR+I+F+R/G**
+```
+mpest -i G2135.msetGTR_codon.rooted.trees -n 1 -s 432567
+```
+### Analysis 21
+Dataset = G2135; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **ModelFinder best fitting**
+```
+mpest -i G2135.MFP.rooted.trees -n 1 -s 432567
+```
+### Analysis 22
+Dataset = **G446 (monophyletic Rafflesiaceae+Apodanthaceae)**; Site masking= HmmCleaner threshold 50 + TrimAL remove sites >70% gap; Partition = gene-based; Substitution Model = **ModelFinder best fitting**
+```
+mpest -i G446.mono.rooted.trees -n 1 -s 432567
+```
