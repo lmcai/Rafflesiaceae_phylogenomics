@@ -1,6 +1,6 @@
 # I. Concatenation
 
-We applied different partition, profile mixture, and site-spesific frequency models to the DNA and protein alignments. All analyses were conducted in IQTREE, branch support was evaluated using 1000 ultrafast bootstrap.
+We applied different partition, profile mixture, and site-spesific frequency models to the DNA and protein alignments. All analyses were conducted in IQTREE, branch support was evaluated using 1000 ultrafast bootstrap. The analysis ID corespond to the IDs in table S3 in the manuscript.
 
 ## 1. DNA concatenation analyses
 
