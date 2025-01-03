@@ -4,9 +4,7 @@ Sequence data cleaning, alignment, and gene tree inference were conducted with t
 
 1. First-round alignment + tree inference
   
-   Use the mafft-linsi algorithm to align DNA sequences, trim with trimAL (-gt 0.10), remove outgroup sequences (non-Malpighiales) with `get_outgroup.py`, then infer a preliminary maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication and optimal models determined by ModelFinder).
-
-The bash script to run these analyses altogether for each gene is provided in `mafft_trimal_fasttree_iqtree.sh`.
+   Use the mafft-linsi algorithm to align DNA sequences, trim with trimAL (-gt 0.10), remove outgroup sequences (non-Malpighiales) with `get_outgroup.py`, then infer a preliminary maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication and optimal models determined by ModelFinder). The bash script to run these analyses altogether for each gene is provided in `mafft_trimal_fasttree_iqtree.sh`.
 
 2. Use the pipeline from Yang and Smith (2016) to remove paralogs and create one-to-one ortholog for the cleaned dataset with at least 10 species.
 
