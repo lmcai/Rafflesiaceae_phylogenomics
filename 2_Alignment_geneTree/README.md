@@ -11,7 +11,7 @@ Sequence data cleaning, alignment, and gene tree inference were conducted with t
 ```
 python yangya-phylogenomic_dataset_construction-489685700c2a/prune_paralogs_RT.py test/ .treefile na_tree_yang_pruned/ 10 malp.taxa
 ```
-This resulted in 2141 orthogroups for final phylogenetic investigation. Newly added orthologous Apodanthaceae for each orthogroup is included in `orthologous_apodanthaceae.tsv`.
+This resulted in 2135 orthogroups for final phylogenetic investigation. Newly added orthologous Apodanthaceae for each orthogroup is included in `orthologous_apodanthaceae.tsv`.
 
 3. Second round alignment
 
