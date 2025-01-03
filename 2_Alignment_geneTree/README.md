@@ -2,6 +2,8 @@
 
 Sequence data cleaning, alignment, and gene tree inference were conducted with the following steps:
 
+## I. Data cleaning
+
 1. First-round alignment + tree inference
   
    Use the mafft-linsi algorithm to align DNA sequences, trim with trimAL (-gt 0.10), remove outgroup sequences (non-Malpighiales) with `get_outgroup.py`, then infer a preliminary maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication and optimal models determined by ModelFinder). The bash script to run these analyses altogether for each gene is provided in `mafft_trimal_fasttree_iqtree.sh`.
@@ -13,6 +15,10 @@ python yangya-phylogenomic_dataset_construction-489685700c2a/prune_paralogs_RT.p
 ```
 This resulted in 2135 orthogroups for final phylogenetic investigation. Newly added orthologous Apodanthaceae for each orthogroup is included in `orthologous_apodanthaceae.tsv`.
 
+In addition, we plotted the distribution of root-to-tip distance for all species and identified 1.5 as a natural break for outliers. Then all sequences with root-to-tip distance longer than 1.5 were removed using `prune_long_branch_retain_ortho_Apo.py`.
+
+<img src="./branch_len_distribution.jpg" alt="Root-to-tip distance" width="375" height ="200">
+
 3. Second round alignment
 
    Use the mafft-linsi algorithm to align **RAW** AA sequences (untrimmed), back translate to DNA codon alignment
@@ -21,6 +27,8 @@ mafft --localpair --maxiterate 1000 aa.fas > aa.aln.fas
 pal2nal.pl aa.aln.fas na.fas -output fasta > na.aln.fas
 
 ```
+
+## II. Alignment masking
 
 4. Alignment masking with HmmCleaner
 
@@ -39,7 +47,11 @@ python hmmcleaner_codon_aware_masking.py 2675.aa.aln.fas 2675.aa.aln_Hmm50.log
 
 This will generate *.masked.fas for each fasta file, with all sites flagged by HmmCleaner masked ('N' for DNA and '?' for protein).
 
-5. Infer a final maximum likelihood gene trees with IQTREE (1000 ultrafast bootstrap replication, -bnni to reduce the risk of overestimating branch supports with UFBoot, and optimal models determined by ModelFinder).
+## III. Gene tree inference
+
+5. Final maximum likelihood gene trees inference.
+
+   with IQTREE (1000 ultrafast bootstrap replication, -bnni to reduce the risk of overestimating branch supports with UFBoot, and optimal models determined by ModelFinder).
 ```
 iqtree2 -s $ID.na.mask.fas -o $OUTGROUP -st CODON -T AUTO -B 1000 -bnni -redo
 ```
