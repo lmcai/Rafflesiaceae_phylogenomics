@@ -6,16 +6,13 @@ For gCF:
 ```
 iqtree2 -te G2141.wastral.hybrid.tre --gcf G2141.MFP.trees --prefix G2135.gCF
 ```
+This result in `G2135.gCF.cf.tree.nex`
+
 For sCF with the complete DNA alignment:
 ```
-iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.cds.fas --prefix G2135.full.sCF
+iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.cds.fas --prefix G2135.cds.sCF
 ```
-For sCF with three codon positions seperately
-```
-iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.codon1.fas --prefix G2135.codon1st.sCF
-iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.codon2.fas --prefix G2135.codon2nd.sCF
-iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.codon3.fas --prefix G2135.codon3rd.sCF
-```
+This result in `G2135.cds.sCF.cf.tree.nex`
 
 # Gene- and site-wise support for alternative topologies
 
