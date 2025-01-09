@@ -14,6 +14,13 @@ iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.cds.fas -
 ```
 This result in `G2135.cds.sCF.cf.tree.nex`
 
+For sCF with the complete protein alignment:
+```
+iqtree2 -te ../coalescent/G2141.wastral.hybrid.tre --scfl 200 -s G2135.aa.fas --prefix G2135.aa.sCF
+```
+This result in `G2135.aa.sCF.cf.tree.nex`
+
+
 # Gene- and site-wise support for alternative topologies
 
 We assessed the gene and site-specific likelihood (LL) for eight alternative placements of Rafflesiaceae+Apodanthaceae with the following steps.
