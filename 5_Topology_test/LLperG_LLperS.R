@@ -27,28 +27,28 @@ c=x[y$class==3,]
 num_reorders <- 1000
 
 # Initialize a matrix to store cumulative values
-cumulative_values <- matrix(0, nrow = 2135, ncol = num_reorders)
+cumulative_values <- matrix(0, nrow = 2134, ncol = num_reorders)
 
 # Perform reordering and compute cumulative sums
 for (i in 1:num_reorders) {
   shuffled_dataset <- x[sample(1:nrow(x)), ]
-  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree1 - shuffled_dataset$Tree5)
+  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree3 - shuffled_dataset$Tree5)
 }
 
 # Calculate the averaged curve
 average_curve <- rowMeans(cumulative_values)
 
 # Plot the curves
-plot(1:2135, cumulative_values[, 1], ylim=c(-200,1500),type = "l", col = rgb(0.8, 0.8, 0.8, 0.1),
+plot(1:2134, cumulative_values[, 1], ylim=c(-200,500),type = "l", col = rgb(0.8, 0.8, 0.8, 0.1),
      xlab = "Number of genes", ylab = "Cumulative delta LL")
 for (i in 2:num_reorders) {
-  lines(1:2135, cumulative_values[, i], col = rgb(0.8, 0.8, 0.8, 0.1))
+  lines(1:2134, cumulative_values[, i], col = rgb(0.8, 0.8, 0.8, 0.1))
 }
-lines(1:2135, average_curve, col = "blue", lwd = 2)  # Add averaged curve in blue
+lines(1:2134, average_curve, col = "blue", lwd = 2)  # Add averaged curve in blue
 
 h=0
-for (i in 1:2135){
-	h=h+s$Tree1[i]-s$Tree5[i]
+for (i in 1:2134){
+	h=h+s$Tree3[i]-s$Tree5[i]
 	s$temp[i]=h
 }
 lines(s$temp,type='l',col='red')
