@@ -1,5 +1,5 @@
 # Rafflesiaceae_phylogenomics
-This repository contains scripts for the phylogenomic study of Rafflesiaceae. If you have any questions, feel free to reach out to Liming Cai daybreak.chua@gmail.com
+This repository contains scripts for the phylogenomic study of Rafflesiaceae and Apodanthaceae. If you have any questions, feel free to reach out to Liming Cai daybreak.chua@gmail.com
 
 Citation: Liming Cai, Liang Liu, Charles C Davis. The danger zone: the joint trap of incomplete lineage sorting and long-branch attraction in placing Rafflesiaceae. In review.
 
