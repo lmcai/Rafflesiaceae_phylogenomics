@@ -1,5 +1,5 @@
-y=read.table('LLperS.csv',header = T)
-x=read.table('LLperG.csv',header = T)
+y=read.csv('LLperS.csv',header = T)
+x=read.csv('LLperG.csv',header = T)
 s<-x[order(x$Rate), ]
 plot(x$tree_median_root2tip,x$Tree1-x$Tree2,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
 abline(h=0)
@@ -32,23 +32,23 @@ cumulative_values <- matrix(0, nrow = 2134, ncol = num_reorders)
 # Perform reordering and compute cumulative sums
 for (i in 1:num_reorders) {
   shuffled_dataset <- x[sample(1:nrow(x)), ]
-  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree3 - shuffled_dataset$Tree5)
+  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree3 - shuffled_dataset$Tree4)
 }
 
 # Calculate the averaged curve
 average_curve <- rowMeans(cumulative_values)
 
 # Plot the curves
-plot(1:2134, cumulative_values[, 1], ylim=c(-200,500),type = "l", col = rgb(0.8, 0.8, 0.8, 0.1),
+plot(1:2134, cumulative_values[, 1], ylim=c(-200,1000),type = "l", col = rgb(0.1, 0.1, 0.1, 0.05),
      xlab = "Number of genes", ylab = "Cumulative delta LL")
 for (i in 2:num_reorders) {
-  lines(1:2134, cumulative_values[, i], col = rgb(0.8, 0.8, 0.8, 0.1))
+  lines(1:2134, cumulative_values[, i], col = rgb(0.1, 0.1, 0.1, 0.05))
 }
-lines(1:2134, average_curve, col = "blue", lwd = 2)  # Add averaged curve in blue
+lines(1:2134, average_curve, col = "yellow", lwd = 2)  # Add averaged curve in blue
 
 h=0
 for (i in 1:2134){
-	h=h+s$Tree3[i]-s$Tree5[i]
+	h=h+s$Tree3[i]-s$Tree4[i]
 	s$temp[i]=h
 }
 lines(s$temp,type='l',col='red')
