@@ -19,3 +19,5 @@ java -jar ~/programs/Notung-2.8.1.3-beta.jar -s sp.tre -b gene.list --root --tre
    a. Remove all Rafflesiaceae and Apodanthaceae in the gene trees before calculating the gene tree species tree congruence (such that the choice of the species tree won't biasedly impact the score)
 
    b. Run SorteDate using `sortdate.sh`
+
+4. To explore the pairwise correlation between tree-wise and lineage-specific phylogenetic properties, consolidate all features into one spreadsheet (Table S2 in the manuscript). Then apply the R script `Gene_feature_pairwise_comparison_plot_v2.R` to test for correlation and plot the result.
