@@ -49,7 +49,7 @@ lines(1:2135, average_curve, col = "yellow", lwd = 2)  # Add averaged curve in b
 
 h=0
 for (i in 1:2135){
-	h=h+s$Tree1[i]-s$Tree5[i]
+	h=h+s$Tree1[i]-s$Tree3[i]
 	s$temp[i]=h
 }
 lines(s$temp,type='l',col='red')
