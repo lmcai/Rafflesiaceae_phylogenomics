@@ -23,36 +23,105 @@ b=x[y$class==2,]
 c=x[y$class==3,]
 
 ##########################################
+# Support per gene examination
 # Define the number of reorders
 num_reorders <- 1000
 
 # Initialize a matrix to store cumulative values
-cumulative_values <- matrix(0, nrow = 2134, ncol = num_reorders)
+cumulative_values <- matrix(0, nrow = 2135, ncol = num_reorders)
 
 # Perform reordering and compute cumulative sums
 for (i in 1:num_reorders) {
   shuffled_dataset <- x[sample(1:nrow(x)), ]
-  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree3 - shuffled_dataset$Tree4)
+  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree1 - shuffled_dataset$Tree5)
 }
 
 # Calculate the averaged curve
 average_curve <- rowMeans(cumulative_values)
 
 # Plot the curves
-plot(1:2134, cumulative_values[, 1], ylim=c(-200,1000),type = "l", col = rgb(0.1, 0.1, 0.1, 0.05),
+plot(1:2135, cumulative_values[, 1], ylim=c(-200,1000),type = "l", col = rgb(0.1, 0.1, 0.1, 0.05),
      xlab = "Number of genes", ylab = "Cumulative delta LL")
 for (i in 2:num_reorders) {
-  lines(1:2134, cumulative_values[, i], col = rgb(0.1, 0.1, 0.1, 0.05))
+  lines(1:2135, cumulative_values[, i], col = rgb(0.1, 0.1, 0.1, 0.05))
 }
-lines(1:2134, average_curve, col = "yellow", lwd = 2)  # Add averaged curve in blue
+lines(1:2135, average_curve, col = "yellow", lwd = 2)  # Add averaged curve in blue
 
 h=0
-for (i in 1:2134){
-	h=h+s$Tree3[i]-s$Tree4[i]
+for (i in 1:2135){
+	h=h+s$Tree1[i]-s$Tree5[i]
 	s$temp[i]=h
 }
 lines(s$temp,type='l',col='red')
 
+###########################################
+#Test if genes grouping Raff and Apo is evolving faster
+
+##############
+#DNA data
+z=read.csv('monophyly_raff_apo.csv')
+merged_df <- merge(x, z, by = "Gene_ID")
+t_test_result <- t.test(merged_df$Rate[merged_df$Monophyly_raff_apo=='N'], merged_df$Rate[merged_df$Monophyly_raff_apo=='Y'], alternative = "greater")
+print(t_test_result)
+
+	Welch Two Sample t-test
+
+data:  merged_df$Rate[merged_df$Monophyly_raff_apo == "N"] and merged_df$Rate[merged_df$Monophyly_raff_apo == "Y"]
+t = -0.81793, df = 839.49, p-value = 0.7932
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ -0.03098754         Inf
+sample estimates:
+mean of x mean of y 
+0.9996147 1.0098986 
+
+#the other direction:
+t_test_result <- t.test(merged_df$Rate[merged_df$Monophyly_raff_apo=='Y'], merged_df$Rate[merged_df$Monophyly_raff_apo=='N'], alternative = "greater")
+print(t_test_result)
+
+	Welch Two Sample t-test
+
+data:  merged_df$Rate[merged_df$Monophyly_raff_apo == "Y"] and merged_df$Rate[merged_df$Monophyly_raff_apo == "N"]
+t = 0.81793, df = 839.49, p-value = 0.2068
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ -0.01041975         Inf
+sample estimates:
+mean of x mean of y 
+1.0098986 0.9996147 
+
+########################
+###Protein data
+a=read.csv('aa.LLperG.csv')
+merged_df <- merge(a, z, by = "Gene_ID")
+print(t_test_result)
+
+	Welch Two Sample t-test
+
+data:  merged_df$Rate[merged_df$Monophyly_raff_apo == "Y"] and merged_df$Rate[merged_df$Monophyly_raff_apo == "N"]
+t = 0.45399, df = 895.49, p-value = 0.325
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ -0.03037397         Inf
+sample estimates:
+mean of x mean of y 
+0.9948065 0.9832435 
+
+#the other direction
+t_test_result <- t.test(merged_df$Rate[merged_df$Monophyly_raff_apo=='N'], merged_df$Rate[merged_df$Monophyly_raff_apo=='Y'], alternative = "greater")
+print(t_test_result)
+
+	Welch Two Sample t-test
+
+data:  merged_df$Rate[merged_df$Monophyly_raff_apo == "N"] and merged_df$Rate[merged_df$Monophyly_raff_apo == "Y"]
+t = -0.45399, df = 895.49, p-value = 0.675
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ -0.05349986         Inf
+sample estimates:
+mean of x mean of y 
+0.9832435 0.9948065 
+#############################################
 
 sum(y$Tree1[y$Site %% 3 ==0])
 [1] -19256079
