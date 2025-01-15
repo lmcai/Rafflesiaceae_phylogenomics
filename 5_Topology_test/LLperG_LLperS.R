@@ -39,13 +39,21 @@ for (i in 1:num_reorders) {
 # Calculate the averaged curve
 average_curve <- rowMeans(cumulative_values)
 
+# Calculate 95% confidence interval
+lower_bound <- apply(cumulative_values, 1, quantile, probs = 0.025)
+upper_bound <- apply(cumulative_values, 1, quantile, probs = 0.975)
+
 # Plot the curves
 plot(1:2135, cumulative_values[, 1], ylim=c(-200,1000),type = "l", col = rgb(0.1, 0.1, 0.1, 0.05),
      xlab = "Number of genes", ylab = "Cumulative delta LL")
 for (i in 2:num_reorders) {
   lines(1:2135, cumulative_values[, i], col = rgb(0.1, 0.1, 0.1, 0.05))
 }
+
 lines(1:2135, average_curve, col = "yellow", lwd = 2)  # Add averaged curve in blue
+# Add 95% confidence interval band
+polygon(c(1:2135, 2135:1), c(lower_bound, rev(upper_bound)), 
+        col = rgb(0.8, 0.8, 0.2, 0.4), border = NA)
 
 h=0
 for (i in 1:2135){
