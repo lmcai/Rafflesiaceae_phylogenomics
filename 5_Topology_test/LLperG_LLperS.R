@@ -1,20 +1,29 @@
 y=read.csv('LLperS.csv',header = T)
 x=read.csv('LLperG.csv',header = T)
 s<-x[order(x$Rate), ]
-plot(x$tree_median_root2tip,x$Tree1-x$Tree2,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
-plot(x$tree_median_root2tip,x$Tree1-x$Tree3,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
-plot(x$tree_median_root2tip,x$Tree1-x$Tree4,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
-plot(x$tree_median_root2tip,x$Tree1-x$Tree5,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
-plot(x$tree_median_root2tip,x$Tree1-x$Tree6,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
-plot(x$tree_median_root2tip,x$Tree1-x$Tree7,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
-plot(x$tree_median_root2tip,x$Tree1-x$Tree8,pch=20,cex=0.3,xlim=c(0,2),ylim=c(-50,25))
-abline(h=0)
+
+#################
+pdf("LLperG.pdf", width = 8.5, height = 11)
+
+# Calculate the plotting region to fit within 1-inch margins
+# The inner area is 6.5 inches wide and 9 inches high after leaving 1-inch margins
+layout(matrix(1:8, nrow = 4, byrow = TRUE)) # Arrange plots in a 4x2 grid
+par(omi = c(1, 1, 1, 1), # Outer margins: 1 inch on all sides
+    mai = c(0.5, 0.5, 0.4, 0.2)) # Inner margins for individual panels
+
+# Generate the plots
+plot(x$Tree1 - x$Tree2, type = 'l', main = "Tree1 - Tree2")
+plot(x$Tree1 - x$Tree3, type = 'l', main = "Tree1 - Tree3")
+plot(x$Tree1 - x$Tree4, type = 'l', main = "Tree1 - Tree4")
+plot(x$Tree1 - x$Tree5, type = 'l', main = "Tree1 - Tree5")
+plot(x$Tree1 - x$Tree6, type = 'l', main = "Tree1 - Tree6")
+plot(x$Tree1 - x$Tree7, type = 'l', main = "Tree1 - Tree7")
+plot(x$Tree1 - x$Tree8, type = 'l', main = "Tree1 - Tree8")
+# If there are fewer than 8 plots, add blank space
+plot.new()  # Adds an empty plot to fill the layout if necessary
+# Close the PDF device
+dev.off() # Ensures all plots are written to the file
+
 
 y$row_num=1:3099966
 y$class <- as.factor(y$row_num %% 3 + 1)
@@ -33,18 +42,18 @@ cumulative_values <- matrix(0, nrow = 2135, ncol = num_reorders)
 # Perform reordering and compute cumulative sums
 for (i in 1:num_reorders) {
   shuffled_dataset <- x[sample(1:nrow(x)), ]
-  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree1 - shuffled_dataset$Tree5)
+  cumulative_values[, i] <- cumsum(shuffled_dataset$Tree1 - shuffled_dataset$Tree4)
 }
 
 # Calculate the averaged curve
 average_curve <- rowMeans(cumulative_values)
 
 # Calculate 95% confidence interval
-lower_bound <- apply(cumulative_values, 1, quantile, probs = 0.025)
-upper_bound <- apply(cumulative_values, 1, quantile, probs = 0.975)
+lower_bound <- apply(cumulative_values, 1, quantile, probs = 0.05)
+upper_bound <- apply(cumulative_values, 1, quantile, probs = 0.95)
 
 # Plot the curves
-plot(1:2135, cumulative_values[, 1], ylim=c(-200,1000),type = "l", col = rgb(0.1, 0.1, 0.1, 0.05),
+plot(1:2135, cumulative_values[, 1], ylim=c(-100,1500),type = "l", col = rgb(0.1, 0.1, 0.1, 0.05),
      xlab = "Number of genes", ylab = "Cumulative delta LL")
 for (i in 2:num_reorders) {
   lines(1:2135, cumulative_values[, i], col = rgb(0.1, 0.1, 0.1, 0.05))
@@ -53,11 +62,11 @@ for (i in 2:num_reorders) {
 lines(1:2135, average_curve, col = "yellow", lwd = 2)  # Add averaged curve in blue
 # Add 95% confidence interval band
 polygon(c(1:2135, 2135:1), c(lower_bound, rev(upper_bound)), 
-        col = rgb(0.8, 0.8, 0.2, 0.4), border = NA)
+        col = rgb(0.2, 0, 0.7, 0.3), border = NA)
 
 h=0
 for (i in 1:2135){
-	h=h+s$Tree1[i]-s$Tree3[i]
+	h=h+s$Tree1[i]-s$Tree4[i]
 	s$temp[i]=h
 }
 lines(s$temp,type='l',col='red')
