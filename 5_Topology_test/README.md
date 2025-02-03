@@ -54,3 +54,12 @@ Then we calculate per site LL for each of the eight alternative topologies:
 ```
 iqtree2 -s G2135.cds.fas -p RateperS_treesearch.best_model.nex -wsl --prefix cds.LLperS -z csd.tree_candidates.trees -n 0 -redo
 ```
+
+# AU test
+
+We used AU tests to statisticlly evaluate whether a phylogenetic hypothesis can be accepted or rejected. The process of which largely follows the gene- and site-wise likelihood calculation. Briefly, we optimize the branch length for alternative topologies (e.g., H1, H2, H3...) using corresponding alignments and then concatenate all trees into a single file and use the following command in IQTREE to perform AU test:
+```
+cat codon1.H1.tre codon1.H2.tre codon1.H3.tre > codon1.all.trees
+
+iqtree -s codon1.fas -p codon1.best_model.nex -z codon1.all.trees -n 0 -zb 1000 -au
+```
