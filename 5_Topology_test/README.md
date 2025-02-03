@@ -61,5 +61,5 @@ We used AU tests to statisticlly evaluate whether a phylogenetic hypothesis can 
 ```
 cat codon1.H1.tre codon1.H2.tre codon1.H3.tre > codon1.all.trees
 
-iqtree -s codon1.fas -p codon1.best_model.nex -z codon1.all.trees -n 0 -zb 1000 -au
+iqtree -s codon1.fas -p codon1.best_model.nex -z codon1.all.trees -n 0 -zb 10000 -au
 ```
