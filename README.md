@@ -29,7 +29,7 @@ Testing alternative placements of Rafflesiacaee under the concatenation and coal
 
 ### 6_Time_tree 
 
-Inferring the placement of Rafflesiaceae under the full coalescent model in starBEAST with a reduced dataset.
+Divergence time estimation of Rafflesiaceae and Apodanthaceae using penalized likelihood method and bayesian method implemented in treePL and PhyloBayes..
 
 ### 7_MSC_simulation
 
