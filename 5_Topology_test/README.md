@@ -63,3 +63,7 @@ cat codon1.H1.tre codon1.H2.tre codon1.H3.tre > codon1.all.trees
 
 iqtree -s codon1.fas -p codon1.best_model.nex -z codon1.all.trees -n 0 -zb 10000 -au
 ```
+
+# Influence of rate
+
+We plotted the ΔLL between the best suporrted and alternative topologies with genes ordered by rates. We also reorder the genes 1000 times randomly to generate a null distribution and 95% confidence internal to evaluate the deviation. The R script is provided in `LLperG_LLperS.R`.
