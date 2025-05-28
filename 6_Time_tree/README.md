@@ -62,7 +62,7 @@ This resulted in 829 genes listed in `G829.list`.
 With a fixed topology (same as the treePL topology above, required by PhyloBayes), we used the 829-gene DNA alignment, uniformly distributed fossil calibration points, and CAT-GTR mixture model to infer divergence time in PhyloBayes. The following command was used:
 
 ```
-~/programs/phylobayes/bin/pb -d G200.sortadate.sp31.no3rd.hmm10.gt03.fas.phy -T analysis15_topo.analysis5_aln.treefile -
+~/programs/phylobayes/bin/pb -d G829.sortadate.no3rd.hmm10.gt03.fas.phy -T analysis15_topo.analysis5_aln.treefile -
 r malp.outgroup -cal malp.clib -ln -gtr -cat -f malp.pb1
 ```
 
@@ -70,4 +70,4 @@ To summarize the result with confidence intervals with first 1000 (25%) trees as
 ```
 ~/programs/phylobayes/bin/readdiv -x 1000 5 malp.pb1
 ```
-The resulting time tree with 95% HPD interval is ``
+The resulting time tree with 95% HPD interval is `malp3_sample.chronogram`
