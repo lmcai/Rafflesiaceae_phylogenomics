@@ -55,7 +55,7 @@ python ~/programs/SortaDate/src/get_good_genes.py gene_tree_combined_statistics.
 
 2. Based on the result of SortaDate, select ## genes meeting the following criteria (1) All genes with >31 species, containing both Rafflesiaceae and Apodanthaceae, and (2) ranked in the top 50% based on clock-likeness. 
 
-This resulted in 829 genes listed in `G.list`.
+This resulted in 829 genes listed in `G829.list`.
 
 3. Divergence time estimation in PhyloBayes v4.1.
 
